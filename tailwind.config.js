@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./node_modules/flowbite-react/**/*.js","./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./node_modules/flowbite-react/**/*.js",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -16,6 +20,19 @@ module.exports = {
           800: "#324e26",
           900: "#2d4324",
         },
+        "dodger-blue": {
+          50: "#eef8ff",
+          100: "#d8f0ff",
+          200: "#bae4ff",
+          300: "#8ad6ff",
+          400: "#54bdff",
+          500: "#2c9cff",
+          600: "#157efb",
+          700: "#0e66e7",
+          800: "#1252bb",
+          900: "#154893",
+        },
+        
       },
       fontFamily: {
         rubik: ["Rubik 80s Fade"],
@@ -25,5 +42,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/line-clamp"), require('flowbite/plugin')],
+  plugins: [require("@tailwindcss/line-clamp"), require("flowbite/plugin")],
 };
