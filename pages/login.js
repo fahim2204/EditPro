@@ -9,7 +9,6 @@ import { loginValidate } from "../lib/validate";
 import axios from "axios";
 import { getCookie, setCookie, getCookies } from "cookies-next";
 import { AuthContext, toastError, toastSuccess } from "../components/request";
-import Navbar from "../components/navbar";
 
 const Login = () => {
   const { token, setToken } = useContext(AuthContext);

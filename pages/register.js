@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import { registerValidate } from "../lib/validate";
 import { AuthContext, toastError, toastSuccess } from "../components/request";
-import Navbar from "../components/navbar";
 
 const Register = () => {
   const router = useRouter();
