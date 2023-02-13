@@ -31,7 +31,7 @@ const Navbar = () => {
                 <Link href="/">Home</Link>
               </li>
               <li className="text-base uppercase navHover">
-                <Link href="/">Products</Link>
+                <Link href="/products">Products</Link>
               </li>
               <li className="text-base uppercase navHover">
                 <Link href="/">Tools</Link>

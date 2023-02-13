@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from "react";
 import Navbar from "../components/navbar";
 import Card from "../components/card";
+import CardVideo from "../components/card-video";
+
 
 export default function Home() {
   return (
@@ -18,60 +20,58 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center mt-5">
-            <Card
-              title="Black and White"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
-            />
+            
+              <Card
+                title="Image Remove Background"
+                image1="/img/remove-background.jpg"
+                image2="/img/remove-background-1.jpg"
+              />
             <Card
               title="Image Quality Enhanced"
-              image1="/img/baby-blur-image.jpg"
-              image2="/img/baby-image.jpg"
+              image1="/img/quality-enhanced-1.jpg"
+              image2="/img/quality-enhanced.jpg"
             />
             <Card
-              title="Image Remove Background"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-remove-bg-image.jpg"
+              title="Photo Colorizer"
+              image1="/img/colorizer.jpg"
+              image2="/img/colorizer-1.jpg"
             />
             <Card
               title="Cartoon Selfie"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
+              image1="/img/cartoon.jpg"
+              image2="/img/cartoon-1.jpg"
             />
             <Card
               title="Passport Photo Maker"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
+              image1="/img/passport.jpg"
+              image2="/img/passport-1.jpg"
             />
-            <Card
+            <CardVideo
               title="Photo Animation"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
+              url="/videos/photo-animation.mp4"
             />
-            <Card
+            <CardVideo
               title="Enhance Video Quality"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
+              url="/videos/enhance-video.mp4"
             />
             <Card
               title="Remove Unwanted Objects"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
+              image1="/img/remove-unwanted.jpg"
+              image2="/img/remove-unwanted-1.jpg"
             />
-            <Card
+            <CardVideo
               title="Remove Video Background"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
+              url="/videos/remove-video-bg-1.mp4"
             />
             <Card
               title="Face Cutout"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
+              image1="/img/cutout.jpg"
+              image2="/img/cutout-1.jpg"
             />
             <Card
               title="Blur Background"
-              image1="/img/baby-image.jpg"
-              image2="/img/baby-bw-image.jpg"
+              image1="/img/blur.jpg"
+              image2="/img/blur-1.jpg"
             />
           </div>
         </div>
