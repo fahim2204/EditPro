@@ -5,10 +5,6 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [shadow, setShadow] = useState(false);
-  const [navBg, setNavBg] = useState("transparent");
-  const [linkColor, setLinkColor] = useState("#ffffff");
-  // const [position, setPosition] = useState('fixed')
 
   const handleNav = () => {
     setNav(!nav);
@@ -20,40 +16,32 @@ const Navbar = () => {
         <div className="flex justify-between items-center max-w-7xl h-20 px-5 md:px-10 mx-auto">
           <div className="hover:scale-110 transition-all duration-200">
             <Link href="/">
-              <h1 className="mb-1 text-4xl font-semibold text-white text-center">
-                EditPro
-              </h1>
+              <h1 className="mb-1 text-4xl font-semibold text-white text-center">EditPro</h1>
             </Link>
           </div>
           <div>
             <ul className="hidden md:flex space-x-6 items-center text-white font-semibold">
-              <li className="text-base uppercase navHover">
+              <li className="text-base uppercase hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="/">Home</Link>
               </li>
-              <li className="text-base uppercase navHover">
+              <li className="text-base uppercase hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="/products">Products</Link>
               </li>
-              <li className="text-base uppercase navHover">
-                <Link href="/">Tools</Link>
-              </li>
-              <li className="text-base uppercase navHover">
+              <li className="text-base uppercase hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="/">Pricing</Link>
               </li>
-              <li className="text-sm uppercase navHover">
+              <li className="text-base uppercase hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="/">About Us</Link>
               </li>
-              <li className="text-base uppercase navHover">
-                <Link href="/registration">Registration</Link>
+              <li className="text-base uppercase hover:scale-110 hover:-translate-y-1 transition-all duration-300">
+                <Link href="/register">Register</Link>
               </li>
-              <li className="text-base uppercase navHover">
-                <Link href="/login">LogIn</Link>
+              <li className="text-base uppercase hover:scale-110 hover:-translate-y-1 transition-all duration-300">
+                <Link href="/login">Login</Link>
               </li>
             </ul>
             {/* Hamburger Icon */}
-            <div
-              onClick={handleNav}
-              className="md:hidden rounded-full bg-gray-600 p-2 z-[100]"
-            >
+            <div onClick={handleNav} className="md:hidden rounded-full bg-gray-600 p-2 z-[100]">
               <AiOutlineMenu size={25} className="text-white" />
             </div>
           </div>
@@ -61,13 +49,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {/* Overlay */}
-        <div
-          className={
-            nav
-              ? "md:hidden fixed left-0 top-0 w-full z-50 h-screen bg-black/70"
-              : ""
-          }
-        >
+        <div className={nav ? "md:hidden fixed left-0 top-0 w-full z-50 h-screen bg-black/70" : ""}>
           {/* Side Drawer Menu */}
           <div
             className={
@@ -89,51 +71,33 @@ const Navbar = () => {
             <div className="py-4 flex flex-col">
               <ul className="uppercase">
                 <Link href="/">
-                  <li
-                    onClick={() => setNav(false)}
-                    className="py-4 text-sm uppercase"
-                  >
+                  <li onClick={() => setNav(false)} className="py-4 text-sm uppercase">
                     Home
                   </li>
                 </Link>
                 <Link href="/login">
-                  <li
-                    onClick={() => setNav(false)}
-                    className="py-4 text-sm uppercase"
-                  >
+                  <li onClick={() => setNav(false)} className="py-4 text-sm uppercase">
                     UNREAL ENGINE
                   </li>
                 </Link>
                 <Link href="/#UNITY">
-                  <li
-                    onClick={() => setNav(false)}
-                    className="py-4 text-sm uppercase"
-                  >
+                  <li onClick={() => setNav(false)} className="py-4 text-sm uppercase">
                     UNITY
                   </li>
                 </Link>
                 <Link href="/#GODOTS">
-                  <li
-                    onClick={() => setNav(false)}
-                    className="py-4 text-sm uppercase"
-                  >
+                  <li onClick={() => setNav(false)} className="py-4 text-sm uppercase">
                     GODOT
                   </li>
                 </Link>
 
                 <Link href="/#contact">
-                  <li
-                    onClick={() => setNav(false)}
-                    className="py-4 text-sm uppercase"
-                  >
+                  <li onClick={() => setNav(false)} className="py-4 text-sm uppercase">
                     Contact
                   </li>
                 </Link>
                 <Link href="/#about">
-                  <li
-                    onClick={() => setNav(false)}
-                    className="py-4 text-sm uppercase"
-                  >
+                  <li onClick={() => setNav(false)} className="py-4 text-sm uppercase">
                     About Us
                   </li>
                 </Link>

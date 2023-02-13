@@ -33,20 +33,20 @@ export default function UploadPage() {
             />
           </div>
         </div>
-        <div className="flex flex-wrap justify-center bg-white max-w-6xl h-[800px] m-10 mx-auto rounded-xl">
+        <div className="flex flex-wrap justify-center bg-white max-w-6xl m-10 mx-auto rounded-xl">
           <div className="mr-5 w-5/12">
             <p className="text-2xl font-bold text-center mt-10 text-black-600">
               Before
             </p>
             <hr className="bg-black h-1 mb-10" />
-            <img className="h-5/6 w-full rounded-xl" src={data.image1} alt="before" />
+            <img className="h-auto w-full rounded-xl" src={data.image1} alt="before" />
           </div>
           <div className="ml-5 w-5/12">
             <p className="text-2xl font-bold text-center mt-10 text-dodger-blue-700">
               After
             </p>
             <hr className="bg-dodger-blue-700 h-1 mb-10" />
-            <img className="h-5/6 rounded-xl" src={data.image2} alt="before" />
+            <img className="h-auto w-full rounded-xl" src={data.image2} alt="before" />
           </div>
         </div>
         <button className="block mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

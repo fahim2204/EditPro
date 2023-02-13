@@ -3,7 +3,7 @@ import {
   ReactCompareSliderImage,
 } from "react-compare-slider";
 import Link from "next/link";
-import uploadPage from "../pages/uploadPage";
+// import uploadPage from "../pages/uploadPage";
 
 const Card = (props) => {
   return (
