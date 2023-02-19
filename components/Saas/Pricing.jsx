@@ -1,10 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import plans from '@data/Saas/plans.json';
-import plansRTL from '@data/Saas/plans-rtl.json';
+import plans from '../../data/Saas/plans.json';
 
 const Pricing = ({ rtl }) => {
-  const data = useMemo(() => rtl ? plansRTL : plans, [rtl]);
+  const data = useMemo(() => plans, [rtl]);
   const [features, setFeatures] = useState([]);
 
   useEffect(() => {
@@ -111,24 +110,18 @@ const Pricing = ({ rtl }) => {
               <div className="price-footTitle">
               </div>
               <div className="price-footItem">
-                <Link href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
-                  <a className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold">
+                <Link className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold" href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
                     <span> { rtl ? 'نبدأ الآن ' : 'Get Started Now' } </span>
-                  </a>
                 </Link>
               </div>
               <div className="price-footItem bg-gray5">
-                <Link href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
-                  <a className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold">
+                <Link className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold" href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
                     <span> { rtl ? 'نبدأ الآن ' : 'Get Started Now' } </span>
-                  </a>
                 </Link>
               </div>
               <div className="price-footItem">
-                <Link href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
-                  <a className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold">
+                <Link className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold" href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
                     <span> { rtl ? 'نبدأ الآن ' : 'Get Started Now' } </span>
-                  </a>
                 </Link>
               </div>
             </div>

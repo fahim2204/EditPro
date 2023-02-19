@@ -38,17 +38,17 @@ const Contact = ({ rtl }) => {
   }
 
   return (
-    <section className="contact section-padding border-bottom border-1 brd-gray style-6">
+    <section className="contact pt-5 brd-gray style-6 mb-5">
       <div className="container">
-        <div className="section-head text-center mb-70 style-5">
-          <h2 className="mb-20">{ rtl ? 'احصل على ' : 'Ready To Start A' } <span>{ rtl ? 'استشارة مجانية' : 'Projects' }</span> </h2>
-          <p>{ rtl ? 'سنتواصل معك مرة أخرى بعد استلام طلبك خلال 24 ساعة' : 'We will contact again after receive your request in 24h' }</p>
+        <div className="section-head text-center mb-4 style-5">
+          <h2 className="mb-3">Contact<span>US</span> </h2>
+          <p>We will contact again after receive your request in 24h</p>
         </div>
         <div className="content">
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <form action="contact.php" className="form" method="post" onSubmit={handleFormSubmit}>
-                <p className="text-center text-danger fs-12px mb-30">{ rtl ? 'الحقل اللذى يحتوى على هذة العلامة اجبارى *' : 'The field is required mark as *' }</p>
+                <p className="text-center text-danger fs-12px mb-4">The field is required mark as *</p>
                 <div className="row">
                   <div className="col-lg-6">
                     <div className="form-group mb-20">

@@ -10,6 +10,7 @@ import Navbar from '../components/Navbars/SaasNav';
 import Projects from '../components/Portfolio/Projects';
 import Download from '../components/Portfolio/Download';
 import Footer from '../components/Saas/Footer';
+import Contact from '../components/Saas/Contact';
 import AboutHeader from '../components/Saas/AboutHeader';
 
 const Home = () => {
@@ -28,11 +29,9 @@ const Home = () => {
       <MainLayout>
         {/* <TopNav style="5" /> */}
         <Navbar navbarRef={navbarRef} />
-        <div className='about-page'><AboutHeader /></div>
-        <main className="portfolio-page style-1">
-          <Projects />
-          <Download />
-        </main>
+        <div className='about-page'>
+          <Contact />
+        </div>
         <Footer noWave />
       </MainLayout>
     </>

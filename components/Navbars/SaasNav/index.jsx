@@ -30,7 +30,7 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav m-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-              <a className="nav-link active dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 PRODUCTS
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown1">
@@ -48,7 +48,7 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
               </ul>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/page-portfolio-5">
+              <Link className="nav-link" href="/pricing">
                 PRICING
               </Link>
             </li>
@@ -58,7 +58,7 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/page-portfolio-5">
+              <Link className="nav-link" href="/contact">
                 CONTACT
               </Link>
             </li>
