@@ -1,6 +1,6 @@
-import '../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
-import 'flowbite'
+import "../styles/preloader.css";
+import "../styles/globals.css";
 import { useEffect, useState } from 'react'
 import { AuthContext,isTokenValid } from '../components/request'
 import { getCookie, setCookie, getCookies } from 'cookies-next';
