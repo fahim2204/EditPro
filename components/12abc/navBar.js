@@ -101,7 +101,7 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
           <div className="nav-side">
             <div className="d-flex align-items-center">
               <span className="nav-item">
-                <Link className="nav-link" href="/page-contact-5">
+                <Link className="nav-link" href="/login">
                   <i className="bi bi-person fs-5 me-2"></i>
                   LOGIN
                 </Link>
