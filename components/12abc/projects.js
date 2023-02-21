@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
-import projects from '../../data/Portfolio/projects.json';
+import projects from '../../data/12abc/projects.json';
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
@@ -31,15 +31,15 @@ const Projects = () => {
                   <div className={`col-lg-4 mix ${project.filter}`} key={i}>
                     <div className={`portfolio-card ${i !== projects.projects.length - 1 ? 'mb-50' : ''}`}>
                       <div className="img">
-                        <ReactCompareSlider
+                      {/* <img src={project.video} alt="Diffusion Video" /> */}
+                        {project.video ? <img src={project.video} alt="Diffusion Video" /> : <ReactCompareSlider
                           itemOne={
                             <ReactCompareSliderImage src={project.imgUp} alt="Image one" />
                           }
                           itemTwo={
                             <ReactCompareSliderImage src={project.imgRes} alt="Image two" />
                           }
-                        />
-                        {/* <img src={project.imgUp} alt="" /> */}
+                        />}
                       </div>
                       <div className="info">
                         <h5>
