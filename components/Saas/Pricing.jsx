@@ -41,12 +41,12 @@ const Pricing = ({ rtl }) => {
     <section className="pricing section-padding style-5" data-scroll-index="4">
       <div className="container">
         <div className="section-head text-center mb-60 style-5">
-          <h2 className="mb-20">{ rtl ? 'اختر السعر' : 'Choose Plan and' } <span>{ rtl ? 'واضغط بدأ' : 'Kick-start' }</span></h2>
+          <h2 className="mb-20">Choose Plan and <span>Kick-start</span></h2>
           <p>
-            { rtl ? 'سواء كنت قد بدأت للتو باختبار سريع أو توسيع نطاق المؤسسة ، فقد قمنا بتغطيتك.' : 'Whether you’re just getting started with rapid testing or scaling across the organization, we’ve got you covered.' }
+           Whether you’re just getting started with rapid testing or scaling across the organization, we’ve got you covered.
           </p>
         </div>
-        <div className="pricing-tabsHead text-center">
+        {/* <div className="pricing-tabsHead text-center">
           <div className="price-radios">
             <div className="form-check form-check-inline">
               <input className="form-check-input" type="radio" name="inlineRadioOptions" id="monthly-input" value="option1" onChange={(e) => togglePlanDuration('monthly')} />
@@ -62,7 +62,7 @@ const Pricing = ({ rtl }) => {
               </label>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="table-responsive">
           <div className="content">
             <div className="price-head">

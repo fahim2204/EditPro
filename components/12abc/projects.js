@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
-import projects from '../../data/12abc/projects.json';
+import ProjectsData from '../../data/12abc/projects.json';
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
 } from "react-compare-slider";
 
 const Projects = () => {
-  const projectsData = projects;
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,11 +26,11 @@ const Projects = () => {
           <div className="content">
             <div className="row mix-container">
               {
-                projectsData.projects.map((project, i) => (
+                ProjectsData.projects.map((project, i) => (
                   <div className={`col-lg-4 mix ${project.filter}`} key={i}>
-                    <div className={`portfolio-card ${i !== projects.projects.length - 1 ? 'mb-50' : ''}`}>
+                    <div className={`portfolio-card ${i !== ProjectsData.projects.length - 1 ? 'mb-50' : ''}`}>
                       <div className="img">
-                      {/* <img src={project.video} alt="Diffusion Video" /> */}
+                        {/* <img src={project.video} alt="Diffusion Video" /> */}
                         {project.video ? <img src={project.video} alt="Diffusion Video" /> : <ReactCompareSlider
                           itemOne={
                             <ReactCompareSliderImage src={project.imgUp} alt="Image one" />
@@ -43,7 +42,7 @@ const Projects = () => {
                       </div>
                       <div className="info">
                         <h5>
-                          <Link href={"/page-single-project-5"}>
+                          <Link href={project.route}>
                             {project.title}
                           </Link>
                         </h5>

@@ -1,42 +1,56 @@
-html, body {
-  overflow-x: hidden;
+html,
+body {
+    overflow-x: hidden;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.cursor-cell {
+    cursor: cell !important;
+}
+
+.bg-transparent-img {
+    background-image: url("/img/mosaic.webp");
+    background-position: center;
+    background-repeat: repeat;
 }
 
 .modal-video {
-  background: rgba(0, 0, 0, 0.9) !important;
+    background: rgba(0, 0, 0, 0.9) !important;
 }
 
 .lg-backdrop {
-  background-color: rgba(0, 0, 0, 0.8) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
 .lg-react-element {
-  display: none;
+    display: none;
 }
 
-.lg-container, .lg-container * {
-  direction: ltr !important;
+.lg-container,
+.lg-container * {
+    direction: ltr !important;
 }
 
 .rc-slider-handle {
-  border-color: var(--clr-style) !important;
-  background-color: var(--clr-style) !important;
-  opacity: 1 !important;
+    border-color: var(--clr-style) !important;
+    background-color: var(--clr-style) !important;
+    opacity: 1 !important;
 }
 
 .rc-slider-handle-dragging {
-  box-shadow: 0 0 0 2px var(--clr-style) !important;
+    box-shadow: 0 0 0 2px var(--clr-style) !important;
 }
-
 
 .related-products-slider .swiper-container,
 .slider-3items .swiper-container,
 .screenshots-slider .swiper-container {
-  direction: ltr !important;
+    direction: ltr !important;
 }
 
-
 .pricing.style-8 .rc-slider-handle {
-  background-color: #fff !important;
-  border-color: #fff !important;
+    background-color: #fff !important;
+    border-color: #fff !important;
 }

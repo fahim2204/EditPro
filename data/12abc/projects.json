@@ -3,65 +3,76 @@
             "imgUp": "/img/bg-remove-up.jpg",
             "imgRes": "/img/bg-remove-res.jpg",
             "title": "Background Remover",
-            "details": "Superb cutout quality with stunning edge details, background removal is a breeze."
+            "details": "Superb cutout quality with stunning edge details, background removal is a breeze.",
+            "route": "/background-remover"
         },
         {
             "imgUp": "/img/face-cut-up.jpg",
             "imgRes": "/img/face-cut-res.jpg",
             "title": "Face Cutout",
-            "details": "Precise human and pet hair segmentation - create stunning images with ease!"
+            "details": "Precise human and pet hair segmentation - create stunning images with ease!",
+            "route": "/"
         },
         {
             "imgUp": "/img/img-enhance-up.jpg",
             "imgRes": "/img/img-enhance-res.jpg",
             "title": "Photo Enhancer",
-            "details": "Enhance photo resolution, quality and detail online 100% automatically."
+            "details": "Enhance photo resolution, quality and detail online 100% automatically.",
+            "route": "/"
         },
         {
             "imgUp": "/img/photo-color-up.jpg",
             "imgRes": "/img/photo-color-res.jpg",
             "title": "Photo Colorizer",
-            "details": "Turn black and white old family photos to color in seconds."
+            "details": "Turn black and white old family photos to color in seconds.",
+            "route": "/"
         },
         {
             "imgUp": "/img/img-retouch-up.jpg",
             "imgRes": "/img/img-retouch-res.jpg",
             "title": "Image Retouch",
-            "details": "Experience the future of image retouching - Enhance your photos like never before."
+            "details": "Experience the future of image retouching - Enhance your photos like never before.",
+            "route": "/"
         },
         {
             "imgUp": "/img/cartoon-up.jpg",
             "imgRes": "/img/cartoon-res.jpg",
             "title": "Cartoon Selfie",
-            "details": "Turn your portrait into cartoon selfie with different styles, 3D Cartoon, 2D Anime."
+            "details": "Turn your portrait into cartoon selfie with different styles, 3D Cartoon, 2D Anime.",
+            "route": "/"
         },
         {
             "imgUp": "/img/img-passport-up.jpg",
             "imgRes": "/img/img-passport-res.jpg",
             "title": "Passport Photo",
-            "details": "Create your own professional passport/visa/id photo maker, with proper sizes."
+            "details": "Create your own professional passport/visa/id photo maker, with proper sizes.",
+            "route": "/"
         },
         {
             "imgUp": "/img/photo-anime-up.webp",
             "imgRes": "/img/photo-anime-res.webp",
             "title": "Photo Animer",
-            "details": "Turn photo into moving video and bring portrait to life."
+            "details": "Turn photo into moving video and bring portrait to life.",
+            "route": "/"
         },
         {
             "imgUp": "/img/color-correction-up.jpg",
             "imgRes": "/img/color-correction-res.jpg",
             "title": "Photo Color Correction",
-            "details": "Transform photo mood and tone - AI color correction made easy!"
+            "details": "Transform photo mood and tone - AI color correction made easy!",
+            "route": "/"
         },
         {
             "video": "/img/ai-art-video.webp",
             "title": "AI Art Generation",
-            "details": "AI Art gives you unlimited access to AI art generation."
+            "details": "AI Art gives you unlimited access to AI art generation.",
+            "route": "/"
         },
         {
             "video": "/img/back-diff-vedio.webp",
             "title": "Background Diffusion",
-            "details": "AI Photo Editing Background Using Text"
+            "details": "AI Photo Editing Background Using Text",
+            "route": "/"
         }
     ]
 }

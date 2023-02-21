@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ProjectsData from '../../data/12abc/projects.json'
 
 const Navbar = ({ navbarRef, bgTransparent }) => {
   const handleMouseMove = (event) => {
@@ -34,17 +35,11 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
                 PRODUCTS
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <li><Link className="dropdown-item" href="/">Background Remover</Link></li>
-                <li><Link className="dropdown-item" href="/home-it-solutions2">Face Cutout</Link></li>
-                <li><Link className="dropdown-item" href="/home-data-analysis">Photo Enhancer</Link></li>
-                <li><Link className="dropdown-item" href="/home-app-landing">Photo Colorizer</Link></li>
-                <li><Link className="dropdown-item" href="/home-saas-technology">Image Retouch</Link></li>
-                <li><Link className="dropdown-item" href="/home-marketing-startup">Cartoon Selfie</Link></li>
-                <li><Link className="dropdown-item" href="/home-it-solutions">Passport Photo</Link></li>
-                <li><Link className="dropdown-item" href="/home-software-company">Photo Animer</Link></li>
-                <li><Link className="dropdown-item" href="/home-digital-agency">Photo Color Correction</Link></li>
-                <li><Link className="dropdown-item" href="/home-modren-shop">AI Art Generation</Link></li>
-                <li><Link className="dropdown-item" href="/home-modren-shop">Background Diffusion</Link></li>
+                {ProjectsData.projects.map((item, index) => {
+                  return (
+                    <li key={index}><Link className="dropdown-item" href={item.route}>{item.title}</Link></li>
+                  )
+                })}
               </ul>
             </li>
             <li className="nav-item">
