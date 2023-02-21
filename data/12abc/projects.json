@@ -11,68 +11,68 @@
             "imgRes": "/img/face-cut-res.jpg",
             "title": "Face Cutout",
             "details": "Precise human and pet hair segmentation - create stunning images with ease!",
-            "route": "/"
+            "route": "/face-cutout"
         },
         {
             "imgUp": "/img/img-enhance-up.jpg",
             "imgRes": "/img/img-enhance-res.jpg",
             "title": "Photo Enhancer",
             "details": "Enhance photo resolution, quality and detail online 100% automatically.",
-            "route": "/"
+            "route": "/photo-enhance"
         },
         {
             "imgUp": "/img/photo-color-up.jpg",
             "imgRes": "/img/photo-color-res.jpg",
             "title": "Photo Colorizer",
             "details": "Turn black and white old family photos to color in seconds.",
-            "route": "/"
+            "route": "/photo-colorize"
         },
         {
             "imgUp": "/img/img-retouch-up.jpg",
             "imgRes": "/img/img-retouch-res.jpg",
             "title": "Image Retouch",
             "details": "Experience the future of image retouching - Enhance your photos like never before.",
-            "route": "/"
+            "route": "/image-retouch"
         },
         {
             "imgUp": "/img/cartoon-up.jpg",
             "imgRes": "/img/cartoon-res.jpg",
             "title": "Cartoon Selfie",
             "details": "Turn your portrait into cartoon selfie with different styles, 3D Cartoon, 2D Anime.",
-            "route": "/"
+            "route": "/cartoon-selfie"
         },
         {
             "imgUp": "/img/img-passport-up.jpg",
             "imgRes": "/img/img-passport-res.jpg",
             "title": "Passport Photo",
             "details": "Create your own professional passport/visa/id photo maker, with proper sizes.",
-            "route": "/"
+            "route": "/passport-photo"
         },
         {
             "imgUp": "/img/photo-anime-up.webp",
             "imgRes": "/img/photo-anime-res.webp",
             "title": "Photo Animer",
             "details": "Turn photo into moving video and bring portrait to life.",
-            "route": "/"
+            "route": "/photo-animer"
         },
         {
             "imgUp": "/img/color-correction-up.jpg",
             "imgRes": "/img/color-correction-res.jpg",
             "title": "Photo Color Correction",
             "details": "Transform photo mood and tone - AI color correction made easy!",
-            "route": "/"
+            "route": "/color-correction"
         },
         {
             "video": "/img/ai-art-video.webp",
             "title": "AI Art Generation",
             "details": "AI Art gives you unlimited access to AI art generation.",
-            "route": "/"
+            "route": "/ai-generation"
         },
         {
             "video": "/img/back-diff-vedio.webp",
             "title": "Background Diffusion",
             "details": "AI Photo Editing Background Using Text",
-            "route": "/"
+            "route": "/background-diffusion"
         }
     ]
 }
