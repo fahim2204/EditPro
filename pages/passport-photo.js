@@ -15,24 +15,25 @@ import { RiseLoader } from "react-spinners";
 const PassportPhoto = () => {
   const [resImg, setResImg] = useState(null);
   const [upImg, setUpImg] = useState(null);
+  const [resPrintImg, setResPrintImg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({});
+  let formData;
 
-  useEffect(() => {
-    console.log("FormData>>", formData);
-  }, [formData]);
+
   function handleDownloadClick() {
     saveAs(resImg, `image-${Date.now()}.png`);
   }
-  const sendApiRequest = () => {
+  const sendApiRequest = (data) => {
     axios
-      .post("https://www.cutout.pro/api/v1/idphoto/printLayout", formData, {
+      .post("https://www.cutout.pro/api/v1/idphoto/printLayout", data, {
         headers: {
           APIKEY: "1ebae678d2ab4eacb47e72fe4f7adb9b",
         },
       })
       .then((response) => {
-        console.log("PassRes", response);
+        console.log("PassRes", response.data.data.idPhotoImage);
+        setResImg(response.data.data.idPhotoImage)
+        setResPrintImg(response.data.data.printLayoutImage)
         setIsLoading(false);
       })
       .catch((error) => {
@@ -47,33 +48,42 @@ const PassportPhoto = () => {
     setUpImg(null);
     setIsLoading(true);
     const file = item[0];
-    // Setting Other parameters For Passport photo modifications
-    setFormData({
-      ...formData,
-      bgColor: "FFFAAA",
-      dpi: 300,
-      mmHeight: 35,
-      mmWidth: 25,
-      printBgColor: "FFFFFF",
-      printMmHeight: 210,
-      printMmWidth: 150,
-    });
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function (e) {
-      const base64 = e.target.result;
-      setFormData({ ...formData, base64: base64.split(",")[1] });
-    };
-
     if (!file.type.startsWith("image/")) {
       setIsLoading(false);
       toast.success("Please select image only.");
       return null;
     }
-    console.log("Sending API request...");
-    sendApiRequest();
-    console.log("API request Sent");
+
+
+    // Setting Other parameters For Passport photo modifications
+    formData = {
+      ...formData,
+      bgColor: "FFFFFF",
+      dpi: 300,
+      mmHeight: 40,
+      mmWidth: 35,
+      printBgColor: "FFFFFF",
+      printMmHeight: 210,
+      printMmWidth: 150
+    }
+
+    const blob = new Blob([await item[0].arrayBuffer()], {
+      type: 'image/png',
+    });
+    const url = URL.createObjectURL(blob);
+    setUpImg(url);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function (e) {
+      const base64 = e.target.result;
+      formData = { ...formData, base64: base64.split(",")[1] }
+
+      console.log("Sending API request...");
+      sendApiRequest(formData);
+      console.log("API request Sent");
+    };
+
   };
 
   return (
