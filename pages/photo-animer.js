@@ -12,27 +12,26 @@ import MainLayout from "../layouts/Main";
 import { RiseLoader } from "react-spinners";
 //= Components
 
-const ImageRetouch = () => {
+const PhotoAnimer = () => {
   const [resImg, setResImg] = useState(null);
   const [upImg, setUpImg] = useState(null);
   const [resPrintImg, setResPrintImg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   let formData;
 
-
   function handleDownloadClick() {
     saveAs(resImg, `image-${Date.now()}.png`);
   }
-  const sendApiRequest = (data) => {
+  const sendApiRequest = (imgUrl) => {
     axios
-      .post("https://www.cutout.pro/api/v1/imageFix", data, {
+      .get(`https://www.cutout.pro/api/v1/faceDriven/submitTaskByUrl?imageUrl=${imgUrl}&templateId=1`, {
         headers: {
           APIKEY: "1ebae678d2ab4eacb47e72fe4f7adb9b",
         },
       })
       .then((response) => {
-        console.log("PassRes", response.data.data.imageUrl);
-        setResImg(response.data.data.imageUrl)
+        console.log("PassRes", response.data);
+        // setResImg(response.data.data.idPhotoImage)
         setIsLoading(false);
       })
       .catch((error) => {
@@ -52,53 +51,38 @@ const ImageRetouch = () => {
       toast.success("Please select image only.");
       return null;
     }
-
-
-    // Setting Other parameters For Passport photo modifications
-
-    formData = {
-      ...formData,
-      "rectangles": [
-        {
-          "height": 100,
-          "width": 100,
-          "x": 160,
-          "y": 280
-        }
-      ],
-      //? User-provided mask image file converted to base64 string, compatible with single-channel, three-channel, and four-channel black and white images. The area to be repaired is in white and the areas to be untouched are in black. If this entry is provided, the “rectangles” parameter is ignored. 
-      // "maskBase64": "/9j/4AAQSkZJRgABAQEA..." 
-    }
-
+    //------ Prview The Uploaded Image
     const blob = new Blob([await item[0].arrayBuffer()], {
       type: 'image/png',
     });
     const url = URL.createObjectURL(blob);
     setUpImg(url);
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function (e) {
-      const base64 = e.target.result;
-      formData = { ...formData, base64: base64.split(",")[1] }
-
-      console.log("Sending API request...");
-      sendApiRequest(formData);
-      console.log("API request Sent");
-    };
+    const formUpData = new FormData();
+    formUpData.append("image", file);
+    axios
+      .post("https://api.imgbb.com/1/upload?key=24e9d1ccc8688e206d1c9e91f290983b", formUpData)
+      .then((x) => {
+        // console.log("imgbb upload>>", x.data.data.image.url);
+        const imgUrl = x.data.data.image.url
+        sendApiRequest(imgUrl);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
   };
 
   return (
     <>
       <Head>
-        <title>Edit Pro - Image Retouch</title>
+        <title>Edit Pro - Photo Animer</title>
       </Head>
 
       <MainLayout>
         <main className="portfolio-page style-1">
           <div className="portfolio-projects style-1 py-5">
-            <h1 className="text-center fs-2 mb-5">Image Retouch</h1>
+            <h1 className="text-center fs-2 mb-5">Photo Animer</h1>
             <div className="col-12 col-md-6 mx-md-auto mx-2 rounded-3 shadow-sm bg-white p-4">
               <Dropzone
                 onDrop={(acceptedFiles) => handleDropImage(acceptedFiles)}
@@ -136,13 +120,13 @@ const ImageRetouch = () => {
                   <div className="col-12 col-md-6 px-5">
                     <div className="text-center mb-3 fs-5 fw-bold">Result</div>
                     <div className='mx-2 text-center'>{resImg && (
-                        <img
-                          className="bg-transparent-img"
-                          src={resImg}
-                          download={resImg}
-                          alt="result"
-                        />
-                      )}
+                      <img
+                        className="bg-transparent-img"
+                        src={resImg}
+                        download={resImg}
+                        alt="result"
+                      />
+                    )}
                     </div>
                     <div className="text-center">
                       <div
@@ -163,4 +147,4 @@ const ImageRetouch = () => {
   );
 };
 
-export default ImageRetouch;
+export default PhotoAnimer;

@@ -127,14 +127,12 @@ const PassportPhoto = () => {
                 <div className="row bg-white mx-2 mx-md-4 p-3 rounded shadow-lg">
                   <div className="col-12 col-md-6 px-5">
                     <div className="text-center mb-3 fs-5 fw-bold">Original</div>
-                    <div className="mx-2">
-                      {upImg && <img className="rounded-3 shadow" src={upImg} alt="original" />}
+                    <div className='mx-2 text-center mb-3 mb-md-0'>{upImg && <img className="rounded-3 shadow" src={upImg} alt="original" />}
                     </div>
                   </div>
                   <div className="col-12 col-md-6 px-5">
                     <div className="text-center mb-3 fs-5 fw-bold">Result</div>
-                    <div className="mx-2">
-                      {resImg && (
+                    <div className='mx-2 text-center'>{resImg && (
                         <img
                           className="bg-transparent-img"
                           src={resImg}
