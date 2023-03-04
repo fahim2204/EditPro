@@ -20,22 +20,7 @@ const Pricing = ({ rtl }) => {
     setFeatures(formattedFeatures);
   }, [data]);
 
-  const togglePlanDuration = (duration) => {
-    let monthly = document.querySelectorAll('.monthly_price');
-    let yearly = document.querySelectorAll('.yearly_price');
 
-    if (duration === 'monthly') {
-      monthly.forEach(price => price.classList.add('d-block'));
-      monthly.forEach(price => price.classList.remove('d-none'));
-      yearly.forEach(price => price.classList.add('d-none'));
-      yearly.forEach(price => price.classList.remove('d-block'));
-    } else {
-      monthly.forEach(price => price.classList.add('d-none'));
-      monthly.forEach(price => price.classList.remove('d-block'));
-      yearly.forEach(price => price.classList.add('d-block'))
-      yearly.forEach(price => price.classList.remove('d-none'));
-    }
-  }
 
   return (
     <section className="pricing section-padding style-5" data-scroll-index="4">
@@ -46,23 +31,14 @@ const Pricing = ({ rtl }) => {
            Whether you’re just getting started with rapid testing or scaling across the organization, we’ve got you covered.
           </p>
         </div>
-        {/* <div className="pricing-tabsHead text-center">
-          <div className="price-radios">
-            <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="monthly-input" value="option1" onChange={(e) => togglePlanDuration('monthly')} />
-              <label className="form-check-label" htmlFor="monthly-input">
-                { rtl ? 'تدفع شهريا' : 'Billed Monthly' }
-              </label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="yearly-input" value="option2" defaultChecked onChange={(e) => togglePlanDuration('yearly')} />
-              <label className="form-check-label" htmlFor="yearly-input">
-                { rtl ? 'تدفع سنويا' : 'Billed yearly' }
-                <small className="alert-danger text-danger rounded-pill ms-1">-15%</small>
-              </label>
-            </div>
+        <div className="container">
+          <div className="row g-3 d-flex">
+            <div className="col-4 rounded bg-white shadow-sm">df</div>
+            <div className="col-4 rounded bg-white shadow-sm">fdg</div>
+            <div className="col-4 rounded bg-white shadow-sm">df</div>
+
           </div>
-        </div> */}
+        </div>
         <div className="table-responsive">
           <div className="content">
             <div className="price-head">
@@ -111,7 +87,7 @@ const Pricing = ({ rtl }) => {
               </div>
               <div className="price-footItem">
                 <Link className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold" href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
-                    <span> { rtl ? 'نبدأ الآن ' : 'Get Started Now' } </span>
+                    <span>Buy Now</span>
                 </Link>
               </div>
               <div className="price-footItem bg-gray5">

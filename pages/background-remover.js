@@ -58,6 +58,7 @@ const BackgroundRemove = () => {
     setUpImg(url);
     const formUpData = new FormData();
     formUpData.append("file", file);
+    formUpData.append("preview", false);
     sendApiRequest(formUpData)
   }
 

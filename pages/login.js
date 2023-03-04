@@ -1,20 +1,22 @@
-import "swiper/css";
-import 'swiper/css/autoplay';
-import 'swiper/css/pagination';
-import 'swiper/css/mousewheel';
-
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
 import Head from 'next/head';
 import MainLayout from '../layouts/Main';
-import SwiperCore, { Autoplay, Pagination, Mousewheel } from 'swiper';
+import { signIn } from "next-auth/react";
 
-SwiperCore.use([Autoplay, Pagination, Mousewheel]);
 
 
 
 const SignIn = () => {
   const [load, setLoad] = useState(false);
+
+
+  const handleGoogleLogin = () => {
+    signIn("google", { callbackUrl: "/" });
+  };
+  const handleFacebookLogin = () => {
+    signIn("facebook", { callbackUrl: "/" });
+  };
 
   useEffect(() => {
     setTimeout(() => setLoad(true));
@@ -56,12 +58,12 @@ const SignIn = () => {
                     </div>
                     <p className="color-666"> Get started to login with other platform </p>
                     <div className="mt-4 d-flex justify-content-center">
-                      <a href="#" className="butn py-3 px-4 border-1 rounded-3 brd-gray border me-2">
+                      <button onClick={handleGoogleLogin} className="butn py-3 px-4 border-1 rounded-3 brd-gray border me-2">
                         <i className="fab fa-google me-1 color-blue5"></i>
-                      </a>
-                      <a href="#" className="butn py-3 px-4 border-1 rounded-3 brd-gray border">
+                      </button>
+                      <button onClick={handleFacebookLogin} className="butn py-3 px-4 border-1 rounded-3 brd-gray border">
                         <i className="fab fa-facebook me-1 color-blue5"></i>
-                      </a>
+                      </button>
                     </div>
 
 
