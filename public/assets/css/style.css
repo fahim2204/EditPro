@@ -9479,25 +9479,21 @@ header.style-15 .countdown-content .logos img {
     width: 34%;
 }
 
-.pricing.style-5 .content .price-head .price-headItem {
-    position: relative;
-    width: 22%;
+.best-con {
+    position: relative;   
     text-align: center;
-    padding: 30px 0;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
 }
 
-.pricing.style-5 .content .price-head .price-headItem .label {
+.best-con .label {
     position: absolute;
-    top: -30px;
-    right: 15px;
+    top: -26px;
+    right: -8px;
     z-index: 5;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -18634,8 +18630,6 @@ footer.style-15 .foot p {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 100px 0;
 }
 
 .signin-page.style-5 .signin .form-content {
@@ -18646,7 +18640,7 @@ footer.style-15 .foot p {
 }
 
 .signin-page.style-5 .signin .form-content .info {
-    padding: 50px;
+    padding: 30px;
     text-align: center;
 }
 
@@ -18709,7 +18703,8 @@ footer.style-15 .foot p {
 .signin-page.style-5 .signin .form-content .info .group-icon .icon {
     position: absolute;
     left: 15px;
-    top: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .signin-page.style-5 .signin .sign-imgs-slider {

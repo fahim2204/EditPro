@@ -1,0 +1,38 @@
+{
+  "monthly": [
+    {
+      "creditAmmount": 40,
+      "creditPrice": 599
+    },
+    {
+      "creditAmmount": 200,
+      "creditPrice": 2650
+    },
+    {
+      "creditAmmount": 500,
+      "creditPrice": 5950
+    },
+    {
+      "creditAmmount": 1200,
+      "creditPrice": 12900
+    }
+  ],
+  "payAsGo": [
+    {
+      "creditAmmount": 1,
+      "creditPrice": 129
+    },
+    {
+      "creditAmmount": 10,
+      "creditPrice": 599
+    },
+    {
+      "creditAmmount": 75,
+      "creditPrice": 3290
+    },
+    {
+      "creditAmmount": 200,
+      "creditPrice": 6690
+    }
+  ]
+}

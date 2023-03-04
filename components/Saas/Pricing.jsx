@@ -1,111 +1,133 @@
-import { useState, useEffect, useMemo } from 'react';
-import Link from 'next/link';
-import plans from '../../data/Saas/plans.json';
+import { useState, useEffect, useMemo } from "react";
+import { BsImages } from "react-icons/bs";
+import { BiCodeCurly } from "react-icons/bi";
+import { IoMdAppstore } from "react-icons/io";
+import Link from "next/link";
+import Plans from "../../data/12abc/pricing.json";
 
-const Pricing = ({ rtl }) => {
-  const data = useMemo(() => plans, [rtl]);
-  const [features, setFeatures] = useState([]);
-
-  useEffect(() => {
-    let formattedFeatures = [];
-
-    data[0].features.forEach(feature => formattedFeatures.push({ title: feature.title, data: [] })) ;
-
-    data.forEach((plan, i) => {
-      plan.features.forEach((feature, x) => {
-        formattedFeatures[x].data[i] = feature.checked !== undefined ? feature.checked : feature.content;
-      })
-    });
-
-    setFeatures(formattedFeatures);
-  }, [data]);
-
-
-
+const Pricing = () => {
   return (
     <section className="pricing section-padding style-5" data-scroll-index="4">
       <div className="container">
         <div className="section-head text-center mb-60 style-5">
-          <h2 className="mb-20">Choose Plan and <span>Kick-start</span></h2>
+          <h2 className="mb-20">
+            Choose Plan and <span>Kick-start</span>
+          </h2>
           <p>
-           Whether you’re just getting started with rapid testing or scaling across the organization, we’ve got you covered.
+            Whether you’re just getting started with rapid testing or scaling
+            across the organization, we’ve got you covered.
           </p>
         </div>
         <div className="container">
-          <div className="row g-3 d-flex">
-            <div className="col-4 rounded bg-white shadow-sm">df</div>
-            <div className="col-4 rounded bg-white shadow-sm">fdg</div>
-            <div className="col-4 rounded bg-white shadow-sm">df</div>
+          <div className="row g-3 d-flex justify-content-center">
+            <div className="col-12 col-md-6 col-lg-4 p-3">
+              {/* <div className="price-headTitle text-center">
+                <img src="/assets/img/icons/price_s5.png" alt="" height={100}/>
+              </div> */}
+              <h4 className="text-center fw-normal mt-2 mb-1">Free Account</h4>
 
-          </div>
-        </div>
-        <div className="table-responsive">
-          <div className="content">
-            <div className="price-head">
-              <div className="price-headTitle">
-                <img src="/assets/img/icons/price_s5.png" alt="" />
+              <div className="text-center">
+                <BsImages className="fs-4 mt-2 mb-1" />
               </div>
-              {
-                data.map((plan, i) => (
-                  <div className={`price-headItem ${plan.bestChoice && 'bg-gray5'}`} key={i}>
-                    <h6>{ plan.title }</h6>
-                    <h2 className={`monthly_price ${plan.bestChoice && 'color-blue5'}`}>{ plan.price.monthly } <span>/{ rtl ? 'شهريا' : 'mo' }</span></h2>
-                    <h2 className={`yearly_price ${plan.bestChoice && 'color-blue5'}`}>{ plan.price.yearly } <span>/{ rtl ? 'سنويا' : 'yr' }</span></h2>
-                    <small>{ plan.short_description }</small>
-                    <small>{ plan.description }</small>
-                    {
-                      plan.bestChoice && <div className="label">{ rtl ? 'أفضل خيار' : 'best choice' }</div>
-                    }
-                  </div>
-                ))
-              }
+              <div className="text-center fw-bold mb-2">2 Free Credit</div>
+              <div className="text-center">
+                <BiCodeCurly className="fs-4 mt-2 mb-1" />
+              </div>
+              <div className="text-center fw-bold mb-2">50 Free Previews</div>
+              <div className="text-center">
+                <IoMdAppstore className="fs-4 mt-2 mb-1" />
+              </div>
+              <div className="text-center fw-bold mb-3">
+                Apps for Windows/Mac/Linux
+                <br />
+                and Adobe Photoshop
+              </div>
             </div>
-
-            <div className="price-body">
-              {
-                features.map((feature, i) => (
-                  <div className="price-bodyItems" key={i}>
-                    <div className="price-bodyTitle">
-                      { feature.title }
-                    </div>
-                    <div className="price-item">
-                      { typeof feature.data[0] === 'boolean' ? (feature.data[0] && <i className="bi bi-check2"></i>) : (<span>{ feature.data[0] }</span>) }
-                    </div>
-                    <div className="price-item bg-gray5">
-                      { typeof feature.data[1] === 'boolean' ? (feature.data[1] && <i className="bi bi-check2"></i>) : (<span>{ feature.data[1] }</span>) }
-                    </div>
-                    <div className="price-item">
-                      { typeof feature.data[2] === 'boolean' ? (feature.data[2] && <i className="bi bi-check2"></i>) : (<span>{ feature.data[2] }</span>) }
-                    </div>
-                  </div>
-                ))
-              }
+            <div className="col-12 col-md-6 col-lg-4">
+              <div className="bg-gray5 rounded shadow-sm p-3 best-con">
+                <div className="label">best choice</div>
+                <h4 className="fw-normal mt-2 mb-1">Subscription Plan</h4>
+                <h2 className="color-blue5 mb-3">
+                  ₹ 500 <span className="fs-6 fw-light">/ image</span>
+                </h2>
+                <div className="mt-4 flex flex-column">
+                  {Plans.monthly.map((item, index) => {
+                    return (
+                      <div key={index} class="form-check mb-3">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="monthlyPlan"
+                          id={`mp${index}`}
+                        />
+                        <label
+                          class="form-check-label user-select-none row"
+                          for={`mp${index}`}
+                        >
+                          <div className="col-6 p-0">
+                            {item.creditAmmount} Credit /
+                            <small className="text-muted">month</small>
+                          </div>
+                          <div className="col-2 p-0">₹ {item.creditPrice}</div>
+                          <div className="col-4 p-0 fw-bold">
+                            ₹{" "}
+                            {(item.creditPrice / item.creditAmmount).toFixed(2)}{" "}
+                            /<small className="text-muted">image</small>
+                          </div>
+                        </label>
+                      </div>
+                    );
+                  })}
+                </div>
+                <button className="butn bg-main border-0 rounded-3 text-white my-3 py-2">
+                  Buy Now
+                </button>
+              </div>
             </div>
-
-            <div className="price-foot">
-              <div className="price-footTitle">
-              </div>
-              <div className="price-footItem">
-                <Link className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold" href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
-                    <span>Buy Now</span>
-                </Link>
-              </div>
-              <div className="price-footItem bg-gray5">
-                <Link className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold" href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
-                    <span> { rtl ? 'نبدأ الآن ' : 'Get Started Now' } </span>
-                </Link>
-              </div>
-              <div className="price-footItem">
-                <Link className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold" href={ rtl ? "/rtl-page-contact" : "/page-contact-5" }>
-                    <span> { rtl ? 'نبدأ الآن ' : 'Get Started Now' } </span>
-                </Link>
+            <div className="col-12 col-md-6 col-lg-4">
+              <div className="border rounded-3 shadow-sm p-3 best-con">
+                <h4 className="fw-normal mt-2 mb-1">Pay As You Go</h4>
+                <h2 className="color-blue5 mb-3">
+                  ₹ 500 <span className="fs-6 fw-light">/ image</span>
+                </h2>
+                <div className="mt-4 flex flex-column">
+                  {Plans.payAsGo.map((item, index) => {
+                    return (
+                      <div key={index} class="form-check mb-3">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="paygPlan"
+                          id={`pgp${index}`}
+                        />
+                        <label
+                          class="form-check-label user-select-none row"
+                          for={`pgp${index}`}
+                        >
+                          <div className="col-5 p-0">
+                            {item.creditAmmount} Credit
+                          </div>
+                          <div className="col-3 p-0">₹ {item.creditPrice}</div>
+                          <div className="col-4 p-0 fw-bold">
+                            ₹{" "}
+                            {(item.creditPrice / item.creditAmmount).toFixed(2)}{" "}
+                            /<small className="text-muted">image</small>
+                          </div>
+                        </label>
+                      </div>
+                    );
+                  })}
+                </div>
+                <button className="butn bg-main border-0 rounded-3 text-white my-3 py-2">
+                  Buy Now
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Pricing
+export default Pricing;
