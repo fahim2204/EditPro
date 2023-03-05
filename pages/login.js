@@ -5,8 +5,6 @@ import MainLayout from '../layouts/Main';
 import { signIn } from "next-auth/react";
 
 
-
-
 const Login = () => {
   const [load, setLoad] = useState(false);
 
@@ -32,6 +30,8 @@ const Login = () => {
     console.log(status);
     // if (status.ok) router.push("/");
   }
+
+
 
   useEffect(() => {
     setTimeout(() => setLoad(true));
