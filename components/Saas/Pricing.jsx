@@ -44,7 +44,7 @@ const Pricing = () => {
               </div>
             </div>
             <div className="col-12 col-md-6 col-lg-4">
-              <div className="bg-gray5 rounded shadow-sm p-3 best-con">
+              <div className="bg-gray5 rounded border shadow-sm p-3 best-con">
                 <div className="label">best choice</div>
                 <h4 className="fw-normal mt-2 mb-1">Subscription Plan</h4>
                 <h2 className="color-blue5 mb-3">
@@ -72,7 +72,7 @@ const Pricing = () => {
                           <div className="col-4 p-0 fw-bold">
                             ₹{" "}
                             {(item.creditPrice / item.creditAmmount).toFixed(2)}{" "}
-                            /<small className="text-muted">image</small>
+                            /<small className="text-muted fw-light">image</small>
                           </div>
                         </label>
                       </div>
@@ -111,7 +111,7 @@ const Pricing = () => {
                           <div className="col-4 p-0 fw-bold">
                             ₹{" "}
                             {(item.creditPrice / item.creditAmmount).toFixed(2)}{" "}
-                            /<small className="text-muted">image</small>
+                            /<small className="text-muted fw-light">image</small>
                           </div>
                         </label>
                       </div>

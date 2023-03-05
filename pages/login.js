@@ -30,7 +30,7 @@ const Login = () => {
     });
     // setServerError(status.error);
     console.log(status);
-    if (status.ok) router.push("/");
+    // if (status.ok) router.push("/");
   }
 
   useEffect(() => {

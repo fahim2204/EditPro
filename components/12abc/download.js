@@ -17,7 +17,7 @@ const Download = () => {
                 </h2>
               </div>
               <div className="butns mt-70">
-                <Link className={`btn rounded-pill fw-bold blue5-3Dbutn hover-blue2 sm-butn mx-1`} target="_blank" href={"/page-about-app"}>
+                <Link href={"/pricing"} className={`btn rounded-pill fw-bold blue5-3Dbutn hover-blue2 sm-butn mx-1`}>
                   <small>See Pricing & Plan</small>
                 </Link>
               </div>

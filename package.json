@@ -9,6 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@greatsumini/react-facebook-login": "^3.3.2",
         "axios": "^1.2.1",
         "bcryptjs": "^2.4.3",
         "change-case-all": "^1.0.15",
