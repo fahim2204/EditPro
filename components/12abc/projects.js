@@ -56,11 +56,6 @@ const Projects = () => {
               }
             </div>
           </div>
-          <div className="text-center">
-            <a href="#" className={`btn rounded-pill fw-bold mt-30 sm-butn hover-blue2 blue5-3Dbutn`} target="_blank">
-              <small>Show More</small>
-            </a>
-          </div>
         </section>
       </div>
     </section>

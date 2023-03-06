@@ -19262,11 +19262,11 @@ footer.style-15 .foot p {
     .navbar.style-5 {
         border-bottom: 1px solid #9999;
     }
-    .navbar.style-5 .navbar-collapse {
+    /* .navbar.style-5 .navbar-collapse {
         margin-top: 20px;
         padding: 15px 0;
         background: #fff9;
-    }
+    } */
     .navbar.style-5 .nav-item .nav-link {
         padding-left: 0;
     }

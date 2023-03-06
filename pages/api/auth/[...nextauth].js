@@ -4,7 +4,6 @@ import GoogleProvider from "next-auth/providers/google";
 
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
-import dbConnect from "../../../lib/dbConnect";
 import User from "../../../model/user";
 
 export default NextAuth({
@@ -31,13 +30,16 @@ export default NextAuth({
           });
         });
 
-        // console.log("Server: user>>", user);
-
         if (user) {
           // IF the user OBJ contains a password then it will be returned null
-          return {email:user.username,name:user.full_name};
+          const checkPass = await compare(credentials.password, user.password);
+          if (checkPass) {
+            return { email: user.username, name: user.full_name };
+          } else {
+            throw new Error("Invalid username or password.");
+          }
         } else {
-          return null;
+          throw new Error("Invalid username or password.");
         }
       },
     }),
@@ -55,13 +57,55 @@ export default NextAuth({
     strategy: "jwt",
     maxAge: 3000,
   },
+  callbacks: {
+    async signIn(user, account, profile) {
+      // const { id: providerId, accessToken } = account;
+      // const { email, name } = user;
+
+      try {
+        const profile = user.user;
+        console.log("server: Full User>>",user);
+        const _user = await new Promise((resolve, reject) => {
+          User.GetByUsername(profile.email, (err, userData) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(userData[0]);
+            }
+          });
+        });
+        if (!_user) {
+          const tempReg = {
+            username: profile.email,
+            password: "notAssigned",
+            status: 1,
+            full_name: profile.name,
+            type: user.account.provider,
+            credit: 0,
+            created_at: new Date(),
+            updated_at: new Date(),
+          };
+          // Process Register User
+          User.RegisterUser(tempReg, (err, data) => {
+            if (!err) {
+            }
+          });
+        }
+
+        return true;
+      } catch (e) {
+        console.error(e);
+        return false;
+      }
+    },
+  },
   // callbacks: {
   //   async session({ session, token, user }) {
   //     if (token && token.userData) {
   //       // Add the user data to the session
   //       session.user = token.user;
   //     }
-      
+
   //     return session;
   //   },
   // },

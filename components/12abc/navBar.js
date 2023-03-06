@@ -1,44 +1,77 @@
-import Link from 'next/link';
-import ProjectsData from '../../data/12abc/projects.json'
+import Link from "next/link";
+import ProjectsData from "../../data/12abc/projects.json";
+import { useSession } from "next-auth/react";
+import { BiUserCircle } from "react-icons/bi";
+import { signOut } from "next-auth/react";
 
 const Navbar = ({ navbarRef, bgTransparent }) => {
+  const { data: session } = useSession();
+
   const handleMouseMove = (event) => {
-    const dropDownToggler = event.target.classList.contains('dropdown-toggle') ? event.target : event.target.querySelector('.dropdown-toggle');
+    const dropDownToggler = event.target.classList.contains("dropdown-toggle")
+      ? event.target
+      : event.target.querySelector(".dropdown-toggle");
     const dropDownMenu = dropDownToggler?.nextElementSibling;
 
-    dropDownToggler?.classList?.add('show');
-    dropDownMenu?.classList?.add('show');
-  }
+    dropDownToggler?.classList?.add("show");
+    dropDownMenu?.classList?.add("show");
+  };
 
   const handleMouseLeave = (event) => {
-    const dropdown = event.target.classList.contains('dropdown') ? event.target : event.target.closest('.dropdown');
-    const dropDownToggler = dropdown.querySelector('.dropdown-toggle');
-    const dropDownMenu = dropdown.querySelector('.dropdown-menu');
+    const dropdown = event.target.classList.contains("dropdown")
+      ? event.target
+      : event.target.closest(".dropdown");
+    const dropDownToggler = dropdown.querySelector(".dropdown-toggle");
+    const dropDownMenu = dropdown.querySelector(".dropdown-menu");
 
-    dropDownToggler?.classList?.remove('show');
-    dropDownMenu?.classList?.remove('show');
-  }
+    dropDownToggler?.classList?.remove("show");
+    dropDownMenu?.classList?.remove("show");
+  };
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light style-5 ${bgTransparent ? 'bg-transparent' : ''}`} ref={navbarRef}>
+    <nav
+      className={`navbar navbar-expand-md navbar-light style-5 ${
+        bgTransparent ? "bg-transparent" : ""
+      }"`}
+      ref={navbarRef}
+    >
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold fs-4" href="/">
           Edit Pro
         </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav m-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav ms-auto me-auto mb-2 mb-md-0">
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 PRODUCTS
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown1">
                 {ProjectsData.projects.map((item, index) => {
                   return (
-                    <li key={index}><Link className="dropdown-item" href={item.route}>{item.title}</Link></li>
-                  )
+                    <li key={index}>
+                      <Link className="dropdown-item" href={item.route}>
+                        {item.title}
+                      </Link>
+                    </li>
+                  );
                 })}
               </ul>
             </li>
@@ -57,59 +90,52 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
                 CONTACT
               </Link>
             </li>
-            {/* <li className="nav-item dropdown" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                pages
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <li><Link className="dropdown-item" href="/page-about-5"><a>about</a></Link></li>
-                <li><Link className="dropdown-item" href="/page-product-5"><a>product</a></Link></li>
-                <li><Link className="dropdown-item" href="/page-services-5"><a>services</a></Link></li>
-                <li><Link className="dropdown-item" href="/page-shop-5"><a>shop</a></Link></li>
-                <li><Link className="dropdown-item" href="/page-single-project-5"><a>single project</a></Link></li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <Link href="/page-portfolio-5">
-                <a className="nav-link">
-                  portfolio
-                </a>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/page-blog-5">
-                <a className="nav-link">
-                  blog
-                  <small className="fs-10px icon-20 rounded-pill bg-blue5 text-white fw-bold px-3 ms-2 d-inline-flex justify-content-center align-items-center">3</small>
-                </a>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/page-contact-5">
-                <a className="nav-link">
-                  contact us
-                </a>
-              </Link>
-            </li> */}
-
           </ul>
-          <div className="nav-side">
-            <div className="d-flex align-items-center">
-              <span className="nav-item">
+          <ul className="navbar-nav">
+            {session?.user ? (
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {session.user.image ? <><img className="rounded-circle border shadow-sm" src={session.user.image} height={35} alt="avatar" /></>:<BiUserCircle className="fs-4" />}
+                  
+                </a>
+                <ul
+                  className="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="navbarDropdown1"
+                >
+                  <li className="text-center">{session.user.name}</li>
+                  <li className="text-center fs-10px mb-2">{session.user.email}</li>
+                  <li>
+                    <Link className="nav-link fw-light py-1" href="/login">
+                      My Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <span className="nav-link fw-light py-1" onClick={signOut}>
+                      Sign Out
+                    </span>
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              <li className="nav-item">
                 <Link className="nav-link" href="/login">
                   <i className="bi bi-person fs-5 me-2"></i>
                   LOGIN
                 </Link>
-              </span>
-              {/* <Link className="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold" href="/page-contact-5">
-                <span>Start Free Trial <i className="bi bi-arrow-right ms-1"></i> </span>
-              </Link> */}
-            </div>
-          </div>
+              </li>
+            )}
+          </ul>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

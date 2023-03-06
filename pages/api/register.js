@@ -25,6 +25,8 @@ export default async (req, res) => {
             req.body.createdAt = new Date();
             req.body.updatedAt = new Date();
             req.body.status = 1;
+            req.body.credit = 0;
+            req.body.type = "credentials";
             delete req.body.confirmPassword;
 
             // Change All key Value to Snake Case For DB
