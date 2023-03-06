@@ -2,10 +2,17 @@ import { useState, useEffect, useMemo } from "react";
 import { BsImages } from "react-icons/bs";
 import { BiCodeCurly } from "react-icons/bi";
 import { IoMdAppstore } from "react-icons/io";
-import Link from "next/link";
 import Plans from "../../data/12abc/pricing.json";
 
 const Pricing = () => {
+const [monthlyPlan, setMonthlyPlan] = useState({credit: 40, price: 599})
+const [paygPlan, setPaygPlan] = useState({credit: 1, price: 129})
+
+useEffect(() => {
+  console.log('monthlyPlan>> ',monthlyPlan);
+  console.log('paygPlan>> ',paygPlan);
+},[paygPlan,monthlyPlan])
+
   return (
     <section className="pricing section-padding style-5" data-scroll-index="4">
       <div className="container">
@@ -59,6 +66,8 @@ const Pricing = () => {
                           type="radio"
                           name="monthlyPlan"
                           id={`mp${index}`}
+                          checked={monthlyPlan?.credit === item.creditAmmount}
+                          onChange={()=>{setMonthlyPlan({credit:item.creditAmmount,price:item.creditPrice})}}
                         />
                         <label
                           class="form-check-label user-select-none row"
@@ -99,6 +108,8 @@ const Pricing = () => {
                           type="radio"
                           name="paygPlan"
                           id={`pgp${index}`}
+                          checked={paygPlan?.credit === item.creditAmmount}
+                          onChange={()=>{setPaygPlan({credit:item.creditAmmount,price:item.creditPrice})}}
                         />
                         <label
                           class="form-check-label user-select-none row"

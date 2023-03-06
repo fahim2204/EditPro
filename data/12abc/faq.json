@@ -1,0 +1,40 @@
+{
+  "faqs": [
+    {
+      "question": "What kind of image format are supported?",
+      "answer": "We support general image format including JPG, PNG, JPEG, or BMP with no more than 15 megabytes, the subject in the images must be clearly meant to be the foreground, for instances a person, animals, product, cartoon, car or graphics icon. If it is oversized (e.g. larger than 4096 x 4096 pixels), the image will be resized to the maximum supported resolution."
+    },
+    {
+      "question": "What do I do if I'm not happy with the results?",
+      "answer": "Cutout.pro works very well with most of the photos that include a person, product, etc. However, the quality of the results may vary with the complexity of images results. Continuous improvement has been made to the AI model of cutout.pro. For better user experience, we highly recommend uploading a few typical test images to see if the results meet the requirements of your specific task. In case the results did not meet the requirements, all subscriptions are covered by a 14 Days Refund Guarantee (restricted to 50 downloads)."
+    },
+    {
+      "question": "What are preview version of images?",
+      "answer": "We provide FREE small resolution cutouts with up to 0.25 megapixels (e.g., 500 x 500 pixels)"
+    },
+    {
+      "question": "Subscription Policy",
+      "answer": "Customers can cancel, upgrade or downgrade their selected subscription anytime."
+    },
+    {
+      "question": "What are Cutout.pro Credits?",
+      "answer": "Credits are virtual currency for using the services offered by cutout.pro, such as downloading full resolution images or videos after background removal. They can be used on cutout.pro webpage, via the cutout.pro API integration and in our Windows/Mac App."
+    },
+    {
+      "question": "What do I do if need more credits?",
+      "answer": "Once all credits are spent in your account, you can either upgrade your subscription plan or purchase a“pay-as-you-go”plan."
+    },
+    {
+      "question": "How to choose Pay-as-you-go credits or Subscription.",
+      "answer": "For one-time only service, it is recommended to purchase “pay-as-you-go” plans. However, for bulk image processing or continuous demand, it is greater saver with subscription. Our monthly plan starts at 40 images per month, and any of the unused credits will be rolled over to the following month (up to 5 times of your single monthly plan credits). It's a no brainer deal."
+    },
+    {
+      "question": "What are the supported payment methods?",
+      "answer": "We currently accept credit/debit cards, PayPal, and wire-transfer to our bank account (Bank Wire information available upon request via customer services.)"
+    },
+    {
+      "question": "How many images can be processed simultaneously through API?",
+      "answer": "Our default API is limited to 5 QPS, which means you can process 3 images per second. If you require more capacity than that, please feel free to contact us before placing your order. We will try our best to accommodate for your specific demand."
+    }
+  ]
+}
