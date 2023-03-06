@@ -1,17 +1,51 @@
 import { useState, useEffect, useMemo } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+
 import { BsImages } from "react-icons/bs";
 import { BiCodeCurly } from "react-icons/bi";
 import { IoMdAppstore } from "react-icons/io";
 import Plans from "../../data/12abc/pricing.json";
 
 const Pricing = () => {
-const [monthlyPlan, setMonthlyPlan] = useState({credit: 40, price: 599})
-const [paygPlan, setPaygPlan] = useState({credit: 1, price: 129})
+  const [isLoading, setIsLoading] = useState(false);
+  const [monthlyPlan, setMonthlyPlan] = useState({ credit: 40, price: 599 });
+  const [paygPlan, setPaygPlan] = useState({ credit: 1, price: 129 });
 
-useEffect(() => {
-  console.log('monthlyPlan>> ',monthlyPlan);
-  console.log('paygPlan>> ',paygPlan);
-},[paygPlan,monthlyPlan])
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    console.log("monthlyPlan>> ", monthlyPlan);
+    console.log("paygPlan>> ", paygPlan);
+  }, [paygPlan, monthlyPlan]);
+
+  const handleBuy = (obj) => {
+    // Chack if user is logged in
+    if (!session) {
+      // Require login
+      router.push("login");
+      return false;
+    }
+    // User have authenticated
+    const formData = {
+      amount: obj.price,
+      cusName: session.user.name,
+      cusEmail: session.user.email,
+    };
+    setIsLoading(true);
+    axios
+      .post(`api/cashfree/create`, formData)
+      .then((x) => {
+        setIsLoading(false);
+        window.location.href = x.data.paymentLink;
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        console.log("Something went wrong!!", err);
+      });
+  };
 
   return (
     <section className="pricing section-padding style-5" data-scroll-index="4">
@@ -67,7 +101,12 @@ useEffect(() => {
                           name="monthlyPlan"
                           id={`mp${index}`}
                           checked={monthlyPlan?.credit === item.creditAmmount}
-                          onChange={()=>{setMonthlyPlan({credit:item.creditAmmount,price:item.creditPrice})}}
+                          onChange={() => {
+                            setMonthlyPlan({
+                              credit: item.creditAmmount,
+                              price: item.creditPrice,
+                            });
+                          }}
                         />
                         <label
                           class="form-check-label user-select-none row"
@@ -81,14 +120,18 @@ useEffect(() => {
                           <div className="col-4 p-0 fw-bold">
                             ₹{" "}
                             {(item.creditPrice / item.creditAmmount).toFixed(2)}{" "}
-                            /<small className="text-muted fw-light">image</small>
+                            /
+                            <small className="text-muted fw-light">image</small>
                           </div>
                         </label>
                       </div>
                     );
                   })}
                 </div>
-                <button className="butn bg-main border-0 rounded-3 text-white my-3 py-2">
+                <button
+                  onClick={() => handleBuy(monthlyPlan)}
+                  className="butn bg-main border-0 rounded-3 text-white my-3 py-2"
+                >
                   Buy Now
                 </button>
               </div>
@@ -109,7 +152,12 @@ useEffect(() => {
                           name="paygPlan"
                           id={`pgp${index}`}
                           checked={paygPlan?.credit === item.creditAmmount}
-                          onChange={()=>{setPaygPlan({credit:item.creditAmmount,price:item.creditPrice})}}
+                          onChange={() => {
+                            setPaygPlan({
+                              credit: item.creditAmmount,
+                              price: item.creditPrice,
+                            });
+                          }}
                         />
                         <label
                           class="form-check-label user-select-none row"
@@ -122,14 +170,18 @@ useEffect(() => {
                           <div className="col-4 p-0 fw-bold">
                             ₹{" "}
                             {(item.creditPrice / item.creditAmmount).toFixed(2)}{" "}
-                            /<small className="text-muted fw-light">image</small>
+                            /
+                            <small className="text-muted fw-light">image</small>
                           </div>
                         </label>
                       </div>
                     );
                   })}
                 </div>
-                <button className="butn bg-main border-0 rounded-3 text-white my-3 py-2">
+                <button
+                  onClick={() => handleBuy(paygPlan)}
+                  className="butn bg-main border-0 rounded-3 text-white my-3 py-2"
+                >
                   Buy Now
                 </button>
               </div>
