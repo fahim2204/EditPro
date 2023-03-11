@@ -49,8 +49,7 @@ const Login = () => {
                   <div className="info">
                     <h3 className="mb-4">
                       <Link href="/" className="color-blue5">
-                        {" "}
-                        EditPro{" "}
+                      <img className="zoom" src="./img/logo.webp" alt="logo" height={35} />
                       </Link>{" "}
                     </h3>
                     <form onSubmit={handleLoginSubmit}>

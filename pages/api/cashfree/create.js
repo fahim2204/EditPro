@@ -1,3 +1,5 @@
+import Transaction from "../../../model/transaction";
+import User from "../../../model/user";
 const { PaymentGateway } = require("@cashfreepayments/cashfree-sdk");
 
 const pg = new PaymentGateway({
@@ -24,7 +26,33 @@ export default async (req, res) => {
           returnUrl: `http://localhost:3000/payment/${_orderId}`, // required
           // notifyUrl: `http://localhost:3000/api/cashfree/order/${req.body.cusEmail}`,
         })
-        .then((data) => res.status(200).json(data))
+        .then(async (data) => {
+          // Get the user
+          const _user = await new Promise((resolve, reject) => {
+            User.GetByUsername(req.body.cusEmail, (err, userData) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(userData[0]);
+              }
+            });
+          });
+          // Create data object for DB
+          const transactionData = {
+            credit: req.body.credit,
+            price: req.body.amount,
+            order_id: _orderId,
+            status: 0,
+            fk_user_id: _user.id,
+            created_at: new Date(),
+            updated_at: new Date(),
+          };
+          // Keep track of the order for later
+          Transaction.Create(transactionData, () => {});
+
+          // Send The Data to client
+          res.status(200).json(data);
+        })
         .catch((error) => res.status(400).json(error));
       break;
     default:

@@ -37,7 +37,7 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
     >
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold fs-4" href="/">
-          Edit Pro
+         <img className="zoom" src="/img/logo.webp" alt="logo" height={30} />
         </Link>
         <button
           className="navbar-toggler"

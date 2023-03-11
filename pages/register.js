@@ -65,9 +65,8 @@ const Register = () => {
                   <div className="info">
                     <h3 className="mb-4">
                       <Link href="/" className="color-blue5">
-                        {" "}
-                        EditPro{" "}
-                      </Link>{" "}
+                      <img className="zoom" src="./img/logo.webp" alt="logo" height={30} />
+                      </Link>
                     </h3>
                     <form onSubmit={handleRegisterSubmit}>
                       <div className="row">
@@ -82,8 +81,7 @@ const Register = () => {
                               required
                             />
                             <span className="icon">
-                              {" "}
-                              <i className="fas fa-user"></i>{" "}
+                              <i className="fas fa-user"></i>
                             </span>
                           </div>
                         </div>
@@ -98,8 +96,8 @@ const Register = () => {
                               placeholder="Email address"
                             />
                             <span className="icon">
-                              {" "}
-                              <i className="fas fa-envelope"></i>{" "}
+                              
+                              <i className="fas fa-envelope"></i>
                             </span>
                           </div>
                         </div>

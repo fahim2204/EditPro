@@ -31,6 +31,7 @@ const Pricing = () => {
     // User have authenticated
     const formData = {
       amount: obj.price,
+      credit: obj.credit,
       cusName: session.user.name,
       cusEmail: session.user.email,
     };

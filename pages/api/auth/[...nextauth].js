@@ -86,10 +86,7 @@ export default NextAuth({
             updated_at: new Date(),
           };
           // Process Register User
-          User.RegisterUser(tempReg, (err, data) => {
-            if (!err) {
-            }
-          });
+          User.RegisterUser(tempReg, () => {});
         }
 
         return true;
