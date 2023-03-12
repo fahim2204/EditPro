@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="my-4">
           <div className="d-flex justify-content-center">
             <small className="small">
-              © 2022 Copyrights by <a href="#" className="fw-bold text-decoration-underline">Iteck Co.</a> All Rights Reserved. Designed by <a href="https://themeforest.net/user/themescamp" className="fw-bold text-decoration-underline">ThemesCamp</a>
+              © 2022 Copyrights by <a href="#" className="fw-bold text-decoration-underline">EditPro</a> All Rights Reserved.
             </small>
           </div>
         </div>

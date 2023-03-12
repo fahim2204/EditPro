@@ -125,9 +125,8 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
               </li>
             ) : (
               <li className="nav-item">
-                <Link className="nav-link" href="/login">
-                  <i className="bi bi-person fs-5 me-2"></i>
-                  LOGIN
+                <Link className="nav-link border rounded fw-light border-primary" href="/login">
+                  Log in / Sign up
                 </Link>
               </li>
             )}
