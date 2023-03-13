@@ -23,7 +23,7 @@ export default async (req, res) => {
           customerName: req.body.cusName, // required
           customerPhone: "9111122222", // required
           customerEmail: req.body.cusEmail, // required
-          returnUrl: 'https://editpro.ai/payment/${order_id}', // required
+          returnUrl: 'https://editpro.ai/payment/{order_id}', // required
           // notifyUrl: `http://localhost:3000/api/cashfree/order/${req.body.cusEmail}`,
         })
         .then(async (data) => {
