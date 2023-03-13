@@ -5,8 +5,8 @@ const { PaymentGateway } = require("@cashfreepayments/cashfree-sdk");
 const pg = new PaymentGateway({
   env: "TEST",
   apiVersion: "2022-09-01",
-  appId: "148606101e30c82e4fd835fe86606841",
-  secretKey: "cfd216ab07882f4310d4daffda9ac1f96c4be0a5",
+  appId: process.env.CASHFREE_APP_ID,
+  secretKey: process.env.CASHFREE_SECRET,
 });
 
 export default async (req, res) => {
@@ -23,7 +23,7 @@ export default async (req, res) => {
           customerName: req.body.cusName, // required
           customerPhone: "9111122222", // required
           customerEmail: req.body.cusEmail, // required
-          returnUrl: `http://localhost:3000/payment/${_orderId}`, // required
+          returnUrl: `https://www.editpro.ai/payment/${_orderId}`, // required
           // notifyUrl: `http://localhost:3000/api/cashfree/order/${req.body.cusEmail}`,
         })
         .then(async (data) => {
