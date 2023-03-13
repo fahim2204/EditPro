@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ProjectsData from "../../data/12abc/projects.json";
+import ProjectsData from "../../data/projects.json";
 import { useSession } from "next-auth/react";
 import { BiUserCircle } from "react-icons/bi";
 import { signOut } from "next-auth/react";
@@ -125,7 +125,7 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
               </li>
             ) : (
               <li className="nav-item">
-                <Link className="nav-link border rounded fw-light border-primary" href="/login">
+                <Link className="nav-link border px-1 rounded fw-light border-primary d-inline" href="/login">
                   Log in / Sign up
                 </Link>
               </li>

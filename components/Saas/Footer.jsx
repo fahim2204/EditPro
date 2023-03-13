@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import footerData from '../../data/Saas/footer.json';
+import footerData from '../../data/footer.json';
 
 const Footer = () => {
   return (

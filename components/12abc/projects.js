@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
-import ProjectsData from '../../data/12abc/projects.json';
+import ProjectsData from '../../data/projects.json';
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
@@ -28,7 +28,7 @@ const Projects = () => {
               {
                 ProjectsData.projects.map((project, i) => (
                   <div className={`col-lg-4 mix ${project.filter}`} key={i}>
-                    <div className={`portfolio-card ${i !== ProjectsData.projects.length - 1 ? 'mb-50' : ''}`}>
+                    <div className={`portfolio-card border shadow-sm ${i !== ProjectsData.projects.length - 1 ? 'mb-50' : ''}`}>
                       <div className="img">
                         {/* <img src={project.video} alt="Diffusion Video" /> */}
                         {project.video ? <img src={project.video} alt="Diffusion Video" /> : <ReactCompareSlider

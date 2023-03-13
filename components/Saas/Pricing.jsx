@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { BsImages } from "react-icons/bs";
 import { BiCodeCurly } from "react-icons/bi";
 import { IoMdAppstore } from "react-icons/io";
-import Plans from "../../data/12abc/pricing.json";
+import Plans from "../../data/pricing.json";
 
 const Pricing = () => {
   const [isLoading, setIsLoading] = useState(false);

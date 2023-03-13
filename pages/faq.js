@@ -3,7 +3,7 @@ import Head from "next/head";
 //= Layout
 import MainLayout from "../layouts/Main";
 //= Components
-import FaqList from "../data/12abc/faq.json";
+import FaqList from "../data/faq.json";
 
 const Home = () => {
   return (
