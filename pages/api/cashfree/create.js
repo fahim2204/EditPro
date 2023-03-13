@@ -24,6 +24,7 @@ export default async (req, res) => {
           customerPhone: "9111122222", // required
           customerEmail: req.body.cusEmail, // required
           returnUrl: `https://www.editpro.ai/api/cashfree/payment/${_orderId}`, // required
+          // returnUrl: `http://localhost:3000/api/cashfree/payment/${_orderId}`, // required
           // notifyUrl: `http://localhost:3000/api/cashfree/order/${req.body.cusEmail}`,
         })
         .then(async (data) => {

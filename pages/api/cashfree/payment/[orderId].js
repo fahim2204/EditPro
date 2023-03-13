@@ -27,11 +27,13 @@ export default async (req, res) => {
             User.UpdateCredit(orderId, (err, ress) => {
               // Status 1 = PAID; ADD Credit to Profile
               Transaction.Update({ status: 1, updated_at: new Date() }, orderId, () => {});
-              res.redirect("/payment/success")
+              res.writeHead(302, { Location: "/payment/success" });
+              res.end();
             });
           } else {
             Transaction.Update({ status: 2, updated_at: new Date() }, orderId, () => {});
-            res.redirect("/payment/failed")
+            res.writeHead(302, { Location: "/payment/failed" });
+            res.end();
           }
         })
       break;
