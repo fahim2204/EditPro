@@ -29,7 +29,11 @@ const BackgroundRemove = () => {
   }, []);
 
   const sendApiRequest = (formUpData) => {
-    axios.post(`api/service/backgroundRemove`, {data:formUpData})
+    axios.post("api/service/backgroundRemove", formUpData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     // axios
     //   .post("https://www.cutout.pro/api/v1/matting?mattingType=6", formUpData, {
     //     headers: {
@@ -66,7 +70,12 @@ const BackgroundRemove = () => {
     const formUpData = new FormData();
     formUpData.append("file", file);
     formUpData.append("preview", false);
-    sendApiRequest(formUpData);
+    // sendApiRequest(formUpData);
+    axios.post("api/service/backgroundRemove", formUpData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
 
   return (
@@ -109,9 +118,17 @@ const BackgroundRemove = () => {
               <div className="container-sm mx-auto mt-4">
                 <div className="row bg-white mx-2 mx-md-4 p-3 rounded shadow-lg">
                   <div className="col-12 col-md-6 px-5">
-                    <div className="text-center mb-3 fs-5 fw-bold">Original</div>
+                    <div className="text-center mb-3 fs-5 fw-bold">
+                      Original
+                    </div>
                     <div className="mx-2 text-center mb-3 mb-md-0">
-                      {upImg && <img className="rounded-3 shadow" src={upImg} alt="original" />}
+                      {upImg && (
+                        <img
+                          className="rounded-3 shadow"
+                          src={upImg}
+                          alt="original"
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="col-12 col-md-6 px-5">
