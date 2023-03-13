@@ -1,5 +1,5 @@
-import Transaction from "../../../model/transaction";
-import User from "../../../model/user";
+import Transaction from "../../../../model/transaction";
+import User from "../../../../model/user";
 
 const { PaymentGateway } = require("@cashfreepayments/cashfree-sdk");
 
@@ -12,26 +12,28 @@ const pg = new PaymentGateway({
 
 export default async (req, res) => {
   const { method } = req;
+  const {orderId} = req.query;
 
   switch (method) {
     case "POST":
       pg.orders
         .getStatus({
-          orderId: req.body.orderId, // required
+          orderId: orderId, // required
         })
         .then((data) => {
           //Write
+          console.log("data>>",data);
           if (data.orderStatus === "PAID" && data.txStatus === "SUCCESS") {
-            User.UpdateCredit(req.body.orderId, (err, res) => {
+            User.UpdateCredit(orderId, (err, ress) => {
               // Status 1 = PAID; ADD Credit to Profile
-              Transaction.Update({ status: 1, updated_at: new Date() }, req.body.orderId, () => {});
+              Transaction.Update({ status: 1, updated_at: new Date() }, orderId, () => {});
+              res.redirect("/payment/success")
             });
           } else {
-            Transaction.Update({ status: 2, updated_at: new Date() }, req.body.orderId, () => {});
+            Transaction.Update({ status: 2, updated_at: new Date() }, orderId, () => {});
+            res.redirect("/payment/failed")
           }
-          res.status(200).json(data);
         })
-        .catch((error) => res.status(500).json(error));
       break;
     default:
       res.status(405).json({ error: "Bad Method Called!!" });
