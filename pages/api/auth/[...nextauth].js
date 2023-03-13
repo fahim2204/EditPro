@@ -64,7 +64,7 @@ export default NextAuth({
 
       try {
         const profile = user.user;
-        console.log("server: Full User>>",user);
+        // console.log("server: Full User>>",user);
         const _user = await new Promise((resolve, reject) => {
           User.GetByUsername(profile.email, (err, userData) => {
             if (err) {
