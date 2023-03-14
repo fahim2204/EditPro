@@ -1,13 +1,10 @@
 import pool from "../lib/dbConnect.js";
 
 export default {
-  Create: (recordData, callback) => {
-    pool.query("INSERT INTO record SET ?", recordData, callback);
-  },
-  Update: (recordData, id, callback) => {
+  Create: (recordData, userid, cost, callback) => {
     pool.query(
-      "UPDATE record SET ? WHERE order_id = ?",
-      [recordData, id],
+      `INSERT INTO record SET ?; UPDATE user SET credit = credit - ? WHERE id = ? `,
+      [recordData, cost, userid],
       callback
     );
   },

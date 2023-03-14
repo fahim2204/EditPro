@@ -4,7 +4,7 @@ import Dropzone from "react-dropzone";
 import { MdCloudUpload } from "react-icons/md";
 import { saveAs } from "file-saver";
 import { useSession } from "next-auth/react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import resizeImage from "../common/resizeImage";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -27,7 +27,6 @@ const BackgroundRemove = () => {
     if (type === "low") {
       saveAs(lowResImg, `image-${Date.now()}.png`);
     } else {
-      // Handle Credit Transaction
       // Chack if user is logged in
       if (!session) {
         // Require login
@@ -36,7 +35,7 @@ const BackgroundRemove = () => {
       }
       // User have authenticated
       const formData = {
-        type:"bgremove",
+        type: "bgremove",
         cusEmail: session.user.email,
       };
       // setIsLoading(true);
@@ -44,7 +43,11 @@ const BackgroundRemove = () => {
         .post(`api/service`, formData)
         .then((x) => {
           // setIsLoading(false);
-          window.location.href = x.data.paymentLink;
+          toast.success("Insufficient credit.");
+          if (x.status === 200) {
+            saveAs(highResImg, `image-${Date.now()}.png`);
+          } else if (x.status === 400) {
+          } else console.log(x.data);
         })
         .catch((err) => {
           // setIsLoading(false);
@@ -112,8 +115,9 @@ const BackgroundRemove = () => {
       <Head>
         <title>Edit Pro - Background Remove</title>
       </Head>
-
       <MainLayout>
+      <ToastContainer />
+
         <main className="portfolio-page style-1">
           <div className="portfolio-projects style-1 py-5">
             <h1 className="text-center fs-2 mb-5">Image Background Removal</h1>
@@ -146,21 +150,15 @@ const BackgroundRemove = () => {
             {lowResImg && (
               <div className="container-sm mx-auto mt-4">
                 <div className="row bg-white mx-2 mx-md-4 p-3 rounded shadow-lg">
-                  <div className="col-12 col-md-6 px-5">
-                    <div className="text-center mb-3 fs-5 fw-bold">
-                      Original
-                    </div>
+                  <div className="col-12 col-md-6 px-2 px-lg-5">
+                    <div className="text-center mb-3 fs-5 fw-bold">Original</div>
                     <div className="mx-2 text-center mb-3 mb-md-0">
                       {upImg && (
-                        <img
-                          className="rounded-3 shadow"
-                          src={upImg}
-                          alt="original"
-                        />
+                        <img className="rounded-3 shadow w-100" src={upImg} alt="original" />
                       )}
                     </div>
                   </div>
-                  <div className="col-12 col-md-6 px-5">
+                  <div className="col-12 col-md-6 px-2 px-lg-5">
                     <div className="text-center mb-3 fs-5 fw-bold">Result</div>
                     <div className="mx-2 text-center">
                       {lowResImg && (
@@ -180,9 +178,7 @@ const BackgroundRemove = () => {
                         >
                           Free Download <BsFillCaretDownFill className="ms-1" />
                         </div>
-                        <small className="mt-1 text-muted fs-12px">
-                          Low Quality
-                        </small>
+                        <small className="mt-1 text-muted fs-12px">Low Quality</small>
                       </div>
                       <div className="d-flex flex-column">
                         <div
