@@ -28,7 +28,9 @@ export default async (req, res) => {
 
         // Check if the user has enough credit for the requested service
         if (user.credit < ServiceData[req.body.type].cost) {
-          return res.status(400).send("Insufficient credit.");
+          return res
+            .status(200)
+            .json({ success: false, msg: "Insufficient credit." });
         }
 
         // Create the transaction record in the database
@@ -40,12 +42,21 @@ export default async (req, res) => {
           created_at: new Date(),
           updated_at: new Date(),
         };
-        Record.Create(transactionData, user.id, ServiceData[req.body.type].cost, (err, result) => {
-          if (err) {
-            return res.status(500).send("Failed to create transaction record.");
+        Record.Create(
+          transactionData,
+          user.id,
+          ServiceData[req.body.type].cost,
+          (err, result) => {
+            if (err) {
+              return res
+                .status(500)
+                .send("Failed to create transaction record.");
+            }
+            return res
+              .status(200)
+              .json({ success: true, msg: "Image Downloaded" });
           }
-          return res.status(200).send("Transaction completed successfully.");
-        });
+        );
       } catch (error) {
         console.error(error);
         return res.status(500).send("Internal server error.");

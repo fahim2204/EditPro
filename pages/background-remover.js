@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 //= Scripts
 //= Layout
 import MainLayout from "../layouts/Main";
-import { RiseLoader } from "react-spinners";
+import { RiseLoader, BarLoader } from "react-spinners";
 //= Components
 import { BsFillCaretDownFill } from "react-icons/bs";
 
@@ -22,6 +22,7 @@ const BackgroundRemove = () => {
   const [highResImg, setHighResImg] = useState(null);
   const [upImg, setUpImg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [downloadLoading, setDownloadLoading] = useState(false);
 
   function handleDownloadClick(type) {
     if (type === "low") {
@@ -30,7 +31,8 @@ const BackgroundRemove = () => {
       // Chack if user is logged in
       if (!session) {
         // Require login
-        router.push("login");
+        toast.error("Please, login first!!");
+
         return false;
       }
       // User have authenticated
@@ -38,15 +40,15 @@ const BackgroundRemove = () => {
         type: "bgremove",
         cusEmail: session.user.email,
       };
-      // setIsLoading(true);
+      setDownloadLoading(true);
       axios
         .post(`api/service`, formData)
         .then((x) => {
-          // setIsLoading(false);
-          toast.success("Insufficient credit.");
-          if (x.status === 200) {
+          setDownloadLoading(false);
+          if (x.data.success == true) {
             saveAs(highResImg, `image-${Date.now()}.png`);
-          } else if (x.status === 400) {
+          } else if (x.data.success == false) {
+            toast.error("Insufficient credit.");
           } else console.log(x.data);
         })
         .catch((err) => {
@@ -116,45 +118,54 @@ const BackgroundRemove = () => {
         <title>Edit Pro - Background Remove</title>
       </Head>
       <MainLayout>
-      <ToastContainer />
+        {/* <ToastContainer /> */}
 
         <main className="portfolio-page style-1">
           <div className="portfolio-projects style-1 py-5">
             <h1 className="text-center fs-2 mb-5">Image Background Removal</h1>
             <div className="col-12 col-md-6 mx-md-auto mx-2 rounded-3 border shadow-sm bg-white p-4">
-              <Dropzone
-                onDrop={(acceptedFiles) => handleDropImage(acceptedFiles)}
-                maxFiles={1}
-                multiple={false}
-              >
-                {({ getRootProps, getInputProps }) => (
-                  <div {...getRootProps()}>
-                    <input {...getInputProps()} />
-                    <div className="btn btn-danger rounded-3 w-100 d-flex align-items-center">
-                      <MdCloudUpload className="fs-5 me-2" />{" "}
-                      <span className="fw-bold fs-5">Upload Image</span>
+              {isLoading ? (
+                <RiseLoader
+                  loading={isLoading}
+                  color="#36d7b7"
+                  size={10}
+                  className="text-center my-2"
+                />
+              ) : (
+                <Dropzone
+                  onDrop={(acceptedFiles) => handleDropImage(acceptedFiles)}
+                  maxFiles={1}
+                  multiple={false}
+                >
+                  {({ getRootProps, getInputProps }) => (
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <div className="btn btn-danger rounded-3 w-100 d-flex align-items-center">
+                        <MdCloudUpload className="fs-5 me-2" />{" "}
+                        <span className="fw-bold fs-5">Upload Image</span>
+                      </div>
+                      <div className="w-full">
+                        <p className="text-center mt-1">or drop a file here</p>
+                      </div>
                     </div>
-                    <div className="w-full">
-                      <p className="text-center mt-1">or drop a file here</p>
-                    </div>
-                  </div>
-                )}
-              </Dropzone>
-              <RiseLoader
-                loading={isLoading}
-                color="#36d7b7"
-                size={8}
-                className="text-center my-2"
-              />
+                  )}
+                </Dropzone>
+              )}
             </div>
             {lowResImg && (
               <div className="container-sm mx-auto mt-4">
                 <div className="row bg-white mx-2 mx-md-4 p-3 rounded shadow-lg">
                   <div className="col-12 col-md-6 px-2 px-lg-5">
-                    <div className="text-center mb-3 fs-5 fw-bold">Original</div>
+                    <div className="text-center mb-3 fs-5 fw-bold">
+                      Original
+                    </div>
                     <div className="mx-2 text-center mb-3 mb-md-0">
                       {upImg && (
-                        <img className="rounded-3 shadow w-100" src={upImg} alt="original" />
+                        <img
+                          className="rounded-3 shadow w-100"
+                          src={upImg}
+                          alt="original"
+                        />
                       )}
                     </div>
                   </div>
@@ -170,23 +181,34 @@ const BackgroundRemove = () => {
                         />
                       )}
                     </div>
+
                     <div className="text-center mt-3 mb-2 d-flex justify-content-around">
                       <div className="d-flex flex-column">
-                        <div
+                        <button
                           className="btn btn-sm rounded-3 btn-primary px-3 py-2 d-flex align-items-center"
                           onClick={() => handleDownloadClick("low")}
                         >
                           Free Download <BsFillCaretDownFill className="ms-1" />
-                        </div>
-                        <small className="mt-1 text-muted fs-12px">Low Quality</small>
+                        </button>
+                        <small className="mt-1 text-muted fs-12px">
+                          Low Quality
+                        </small>
                       </div>
                       <div className="d-flex flex-column">
-                        <div
+                        <button
+                          disabled={downloadLoading}
                           className="btn btn-sm rounded-3 btn-outline-primary px-3 py-2  d-flex align-items-center"
                           onClick={() => handleDownloadClick("high")}
                         >
-                          Download HD <BsFillCaretDownFill className="ms-1" />
-                        </div>
+                          {downloadLoading ? (
+                            <BarLoader className="my-2" color="#36d7b7" />
+                          ) : (
+                            <>
+                              Download HD{" "}
+                              <BsFillCaretDownFill className="ms-1" />
+                            </>
+                          )}
+                        </button>
                         <small className="mt-1 text-muted fs-12px">
                           High Quality, <b>1 Credit</b>
                         </small>
