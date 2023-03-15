@@ -31,6 +31,10 @@ const ServiceData = {
     cost: 6,
     title: "AI Art Generation",
   },
+  passport:{
+    cost: 2,
+    title: "Passport Photo",
+  },
 };
 
 export default async (req, res) => {

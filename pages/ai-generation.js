@@ -165,7 +165,7 @@ const AIGeneration = () => {
             <h1 className="text-center fs-2 mb-5">AI Art Generation</h1>
             <div className="container">
               <div className="row px-4 d-flex justify-content-around">
-                <div className="col-5">
+                <div className="col-12 col-md-6 col-lg-5 mb-3">
                   <div className="rounded-3 border shadow-sm bg-white p-4">
                     {isLoading ? (
                       <RiseLoader
@@ -265,7 +265,7 @@ const AIGeneration = () => {
                     )}
                   </div>
                 </div>
-                <div className="col-5 rounded-3 border shadow-sm bg-white px-4 py-2">
+                <div className="col-12 col-md-6 col-lg-5 rounded-3 border shadow-sm bg-white px-4 py-2">
                   <h4 className="text-center mb-3">Select Style</h4>
                   <div className="row d-flex justify-content-start">
                     {aiCatList.map((item, index) => {
