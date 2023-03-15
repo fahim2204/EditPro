@@ -7,6 +7,30 @@ const ServiceData = {
     cost: 1,
     title: "Background Remove",
   },
+  facecut:{
+    cost: 1,
+    title: "Face Cutout",
+  },
+  enhance:{
+    cost: 2,
+    title: "Photo Enhance",
+  },
+  colorize:{
+    cost: 2,
+    title: "Photo Colorize",
+  },
+  cartoon:{
+    cost: 1,
+    title: "Cartoon Selfie",
+  },
+  correction:{
+    cost: 1,
+    title: "Color Correction",
+  },
+  ai:{
+    cost: 6,
+    title: "AI Art Generation",
+  },
 };
 
 export default async (req, res) => {

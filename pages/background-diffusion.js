@@ -15,7 +15,7 @@ import { RiseLoader, BarLoader } from "react-spinners";
 //= Components
 import { BsFillCaretDownFill } from "react-icons/bs";
 
-const FaceCutOut = () => {
+const BackgroundDiffusion = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [lowResImg, setLowResImg] = useState(null);
@@ -37,7 +37,7 @@ const FaceCutOut = () => {
       }
       // User have authenticated
       const formData = {
-        type: "facecut",
+        type: "correction",
         cusEmail: session.user.email,
       };
       setDownloadLoading(true);
@@ -66,7 +66,7 @@ const FaceCutOut = () => {
 
   const sendApiRequest = (formUpData) => {
     axios
-      .post("https://www.cutout.pro/api/v1/matting?mattingType=3", formUpData, {
+      .post("https://www.cutout.pro/api/v1/matting?mattingType=4", formUpData, {
         headers: {
           APIKEY: "1ebae678d2ab4eacb47e72fe4f7adb9b",
         },
@@ -115,14 +115,12 @@ const FaceCutOut = () => {
   return (
     <>
       <Head>
-        <title>Edit Pro - Face Cutout</title>
+        <title>Edit Pro - Background Diffusion</title>
       </Head>
       <MainLayout>
-        {/* <ToastContainer /> */}
-
         <main className="portfolio-page style-1">
           <div className="portfolio-projects style-1 py-5">
-            <h1 className="text-center fs-2 mb-5">Face Cutout</h1>
+            <h1 className="text-center fs-2 mb-5">Background Diffusion</h1>
             <div className="col-12 col-md-6 mx-md-auto mx-2 rounded-3 border shadow-sm bg-white p-4">
               {isLoading ? (
                 <RiseLoader
@@ -210,7 +208,7 @@ const FaceCutOut = () => {
                           )}
                         </button>
                         <small className="mt-1 text-muted fs-12px">
-                          High Quality, <b>1 Credit</b>
+                          High Quality, <b>2 Credit</b>
                         </small>
                       </div>
                     </div>
@@ -225,4 +223,4 @@ const FaceCutOut = () => {
   );
 };
 
-export default FaceCutOut;
+export default BackgroundDiffusion;
