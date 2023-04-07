@@ -178,7 +178,7 @@ const AIGeneration = () => {
                       <form onSubmit={(e) => handleAiPrompt(e)}>
                         <div className="d-flex align-items-start">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             type="text"
                             value={promptText}
                             onChange={(e) => setPromptText(e.target.value)}
@@ -278,7 +278,7 @@ const AIGeneration = () => {
                             onClick={() => {
                               setSelectedStyle(item);
                             }}
-                            className={`w-100 rounded ${
+                            className={`w-100 rounded cursor-pointer ${
                               selectedStyle === item
                                 ? "border shadow border-3 border-blue6"
                                 : ""
