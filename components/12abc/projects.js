@@ -27,7 +27,7 @@ const Projects = () => {
             <div className="row mix-container">
               {
                 ProjectsData.projects.map((project, i) => (
-                  <div className={`col-lg-4 mix ${project.filter}`} key={i}>
+                  <div className={`col-sm-6 col-lg-4 mix ${project.filter}`} key={i}>
                     <div className={`portfolio-card border shadow-sm ${i !== ProjectsData.projects.length - 1 ? 'mb-50' : ''}`}>
                       <div className="img">
                         {/* <img src={project.video} alt="Diffusion Video" /> */}

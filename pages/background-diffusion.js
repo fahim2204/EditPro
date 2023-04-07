@@ -211,7 +211,7 @@ const BackgroundDiffusion = () => {
                         <form onSubmit={(e) => handleDiffusionPrompt(e)}>
                           <div className="d-flex flex-column align-items-start mt-5">
                             <textarea
-                              class="form-control"
+                              className="form-control"
                               type="text"
                               value={promptText}
                               onChange={(e) => setPromptText(e.target.value)}
