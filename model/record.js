@@ -8,4 +8,7 @@ export default {
       callback
     );
   },
+  Get:(userid, callback) => {
+    pool.query("SELECT * FROM record WHERE fk_user_id = ?", [id], callback);
+  },
 };

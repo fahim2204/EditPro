@@ -7,39 +7,39 @@ const ServiceData = {
     cost: 1,
     title: "Background Remove",
   },
-  facecut:{
+  facecut: {
     cost: 1,
     title: "Face Cutout",
   },
-  enhance:{
+  enhance: {
     cost: 2,
     title: "Photo Enhance",
   },
-  colorize:{
+  colorize: {
     cost: 2,
     title: "Photo Colorize",
   },
-  cartoon:{
+  cartoon: {
     cost: 1,
     title: "Cartoon Selfie",
   },
-  correction:{
+  correction: {
     cost: 1,
     title: "Color Correction",
   },
-  ai:{
+  ai: {
     cost: 6,
     title: "AI Art Generation",
   },
-  passport:{
+  passport: {
     cost: 2,
     title: "Passport Photo",
   },
-  diffusion:{
+  diffusion: {
     cost: 3,
     title: "Background Diffusion",
   },
-  retouch:{
+  retouch: {
     cost: 1,
     title: "Image Retouch",
   },
@@ -49,6 +49,39 @@ export default async (req, res) => {
   const { method } = req;
 
   switch (method) {
+    case "GET":
+      try {
+        // Get the user by email
+        const user = await new Promise((resolve, reject) => {
+          User.GetByUsername(req.body.cusEmail, (err, userData) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(userData[0]);
+            }
+          });
+        });
+
+        // Create the transaction record in the database
+        // const transactionData = {
+        //   credit: ServiceData[req.body.type].cost,
+        //   info: ServiceData[req.body.type].title,
+        //   type: 1,
+        //   fk_user_id: user.id,
+        //   created_at: new Date(),
+        //   updated_at: new Date(),
+        // };
+        Record.get(user.id, (err, result) => {
+          if (err) {
+            return res.status(500).send("Failed to fetch data");
+          }
+          return res.status(200).json(result);
+        });
+      } catch (error) {
+        console.error(error);
+        return res.status(500).send("Internal server error.");
+      }
+      break;
     case "POST":
       try {
         // Get the user by email
@@ -97,7 +130,6 @@ export default async (req, res) => {
         console.error(error);
         return res.status(500).send("Internal server error.");
       }
-
       break;
     default:
       res.status(405).json({ error: "Bad Method Called!!" });

@@ -15,7 +15,7 @@ import { RiseLoader, BarLoader } from "react-spinners";
 //= Components
 import { BsFillCaretDownFill } from "react-icons/bs";
 
-const PhotoAnimer = () => {
+const VideoBackgroundRemove = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [upImg, setUpImg] = useState(null);
@@ -170,12 +170,12 @@ const PhotoAnimer = () => {
   return (
     <>
       <Head>
-        <title>Edit Pro - Photo Animer</title>
+        <title>Edit Pro - Video Background Removal</title>
       </Head>
       <MainLayout>
         <main className="portfolio-page style-1">
           <div className="portfolio-projects style-1 py-5">
-            <h1 className="text-center fs-2 mb-5">Photo Animer</h1>
+            <h1 className="text-center fs-2 mb-5">Video Background Removal</h1>
             <div className="col-12 col-md-6 mx-md-auto mx-2 rounded-3 border shadow-sm bg-white p-4">
               {isLoading ? (
                 <RiseLoader
@@ -305,4 +305,4 @@ const PhotoAnimer = () => {
   );
 };
 
-export default PhotoAnimer;
+export default VideoBackgroundRemove;
