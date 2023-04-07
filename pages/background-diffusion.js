@@ -41,7 +41,7 @@ const BackgroundDiffusion = () => {
       }
       // User have authenticated
       const formData = {
-        type: "correction",
+        type: "diffusion",
         cusEmail: session.user.email,
       };
       setDownloadLoading(true);
@@ -62,11 +62,50 @@ const BackgroundDiffusion = () => {
     }
   }
 
+  function imageUrlToBase64(url) {
+    return fetch(url)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const imageFile = new File([blob], `image-${Date.now()}.png`, {
+          type: "image/png",
+        });
+        return imageFile;
+      });
+  }
+
   useEffect(() => {
     document.addEventListener("contextmenu", (e) => {
       e.preventDefault();
     });
   }, []);
+
+
+  const checkImageGeneration = (taskid) => {
+    axios
+      .get(
+        `https://www.cutout.pro/api/v1/getPaintResult?taskId=${taskid}`,
+        {
+          headers: {
+            APIKEY: "1ebae678d2ab4eacb47e72fe4f7adb9b",
+          },
+        }
+      )
+      .then(async (res) => {
+        if (res.data.data.resultList[0].percentage !== 100) {
+          setLoadingPercentage(res.data.data.resultList[0].percentage || 0);
+          setTimeout(() => {
+            checkImageGeneration(taskid);
+          }, 250);
+        } else {
+          setHighResImg(res.data.data.resultUrl);
+          imageUrlToBase64(res.data.data.resultList[0].result).then(async (x) => {
+            const imageHigh = await resizeImage(x);
+            setLowResImg(imageHigh);
+          });
+          setIsImageLoading(false);
+        }
+      });
+  };
 
   // Call API for diffusion
   const sendApiRequestDiffusion = (formUpData) => {
@@ -77,7 +116,10 @@ const BackgroundDiffusion = () => {
         },
       })
       .then(async (response) => {
-        console.log("object>>", response);
+        console.log('response.data.data>> ',response.data.data);
+        
+        checkImageGeneration(response.data.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
@@ -137,7 +179,7 @@ const BackgroundDiffusion = () => {
     setIsImageLoading(true);
     const diffusionObj = {
       text: promptText,
-      imgBase64: bgRemovedImg,
+      imgBase64: bgRemovedImg.substring(22).trim(),
     };
     sendApiRequestDiffusion(diffusionObj);
   };
@@ -200,9 +242,9 @@ const BackgroundDiffusion = () => {
                   </div>
                   <div className="col-12 col-md-6 px-2 px-lg-5">
                     <>
-                      {isPromptLoading ? (
+                      {isLoading ? (
                         <RiseLoader
-                          loading={isPromptLoading}
+                          loading={isLoading}
                           color="#36d7b7"
                           size={10}
                           className="text-center my-2"

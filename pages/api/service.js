@@ -35,6 +35,10 @@ const ServiceData = {
     cost: 2,
     title: "Passport Photo",
   },
+  diffusion:{
+    cost: 3,
+    title: "Background Diffusion",
+  },
 };
 
 export default async (req, res) => {
