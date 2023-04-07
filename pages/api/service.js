@@ -39,6 +39,10 @@ const ServiceData = {
     cost: 3,
     title: "Background Diffusion",
   },
+  retouch:{
+    cost: 1,
+    title: "Image Retouch",
+  },
 };
 
 export default async (req, res) => {

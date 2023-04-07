@@ -254,7 +254,7 @@ const PassportPhoto = () => {
                             <div className="d-flex flex-column align-items-start mt-5">
                               <div className="d-flex">
                                 <input
-                                  class="form-control mx-2"
+                                  className="form-control mx-2"
                                   type="number"
                                   min={1}
                                   name="imgHeight"
@@ -263,7 +263,7 @@ const PassportPhoto = () => {
                                   required
                                 />
                                 <input
-                                  class="form-control mx-2"
+                                  className="form-control mx-2"
                                   type="number"
                                   min={1}
                                   name="imgWidth"

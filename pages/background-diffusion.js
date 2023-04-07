@@ -79,17 +79,13 @@ const BackgroundDiffusion = () => {
     });
   }, []);
 
-
   const checkImageGeneration = (taskid) => {
     axios
-      .get(
-        `https://www.cutout.pro/api/v1/getPaintResult?taskId=${taskid}`,
-        {
-          headers: {
-            APIKEY: "1ebae678d2ab4eacb47e72fe4f7adb9b",
-          },
-        }
-      )
+      .get(`https://www.cutout.pro/api/v1/getPaintResult?taskId=${taskid}`, {
+        headers: {
+          APIKEY: "1ebae678d2ab4eacb47e72fe4f7adb9b",
+        },
+      })
       .then(async (res) => {
         if (res.data.data.resultList[0].percentage !== 100) {
           setLoadingPercentage(res.data.data.resultList[0].percentage || 0);
@@ -97,11 +93,13 @@ const BackgroundDiffusion = () => {
             checkImageGeneration(taskid);
           }, 250);
         } else {
-          setHighResImg(res.data.data.resultUrl);
-          imageUrlToBase64(res.data.data.resultList[0].result).then(async (x) => {
-            const imageHigh = await resizeImage(x);
-            setLowResImg(imageHigh);
-          });
+          setHighResImg(res.data.data.resultList[0].result);
+          imageUrlToBase64(res.data.data.resultList[0].result).then(
+            async (x) => {
+              const imageHigh = await resizeImage(x);
+              setLowResImg(imageHigh);
+            }
+          );
           setIsImageLoading(false);
         }
       });
@@ -116,8 +114,8 @@ const BackgroundDiffusion = () => {
         },
       })
       .then(async (response) => {
-        console.log('response.data.data>> ',response.data.data);
-        
+        console.log("response.data.data>> ", response.data.data);
+
         checkImageGeneration(response.data.data);
         setIsLoading(false);
       })
@@ -179,7 +177,7 @@ const BackgroundDiffusion = () => {
     setIsImageLoading(true);
     const diffusionObj = {
       text: promptText,
-      imgBase64: bgRemovedImg.substring(22).trim(),
+      imgBase64: bgRemovedImg.split(",")[1],
     };
     sendApiRequestDiffusion(diffusionObj);
   };
