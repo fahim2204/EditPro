@@ -3,7 +3,7 @@ import User from "../../../model/user";
 const { PaymentGateway } = require("@cashfreepayments/cashfree-sdk");
 
 const pg = new PaymentGateway({
-  env: "TEST",
+  env: "PRODUCTION",
   apiVersion: "2022-09-01",
   appId: process.env.CASHFREE_APP_ID,
   secretKey: process.env.CASHFREE_SECRET,
@@ -28,6 +28,8 @@ export default async (req, res) => {
           // notifyUrl: `http://localhost:3000/api/cashfree/order/${req.body.cusEmail}`,
         })
         .then(async (data) => {
+          console.log('data>> ',data);
+          
           // Get the user
           const _user = await new Promise((resolve, reject) => {
             User.GetByUsername(req.body.cusEmail, (err, userData) => {
