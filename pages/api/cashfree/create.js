@@ -28,8 +28,6 @@ export default async (req, res) => {
           // notifyUrl: `http://localhost:3000/api/cashfree/order/${req.body.cusEmail}`,
         })
         .then(async (data) => {
-          console.log('data>> ',data);
-          
           // Get the user
           const _user = await new Promise((resolve, reject) => {
             User.GetByUsername(req.body.cusEmail, (err, userData) => {

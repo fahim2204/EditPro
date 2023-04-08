@@ -49,39 +49,6 @@ export default async (req, res) => {
   const { method } = req;
 
   switch (method) {
-    case "GET":
-      try {
-        // Get the user by email
-        const user = await new Promise((resolve, reject) => {
-          User.GetByUsername(req.body.cusEmail, (err, userData) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(userData[0]);
-            }
-          });
-        });
-
-        // Create the transaction record in the database
-        // const transactionData = {
-        //   credit: ServiceData[req.body.type].cost,
-        //   info: ServiceData[req.body.type].title,
-        //   type: 1,
-        //   fk_user_id: user.id,
-        //   created_at: new Date(),
-        //   updated_at: new Date(),
-        // };
-        Record.get(user.id, (err, result) => {
-          if (err) {
-            return res.status(500).send("Failed to fetch data");
-          }
-          return res.status(200).json(result);
-        });
-      } catch (error) {
-        console.error(error);
-        return res.status(500).send("Internal server error.");
-      }
-      break;
     case "POST":
       try {
         // Get the user by email

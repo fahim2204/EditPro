@@ -29,7 +29,6 @@ const MainLayout = ({ children, scrollTopText, isRTL }) => {
 
       </Head>
       <Navbar navbarRef={navbarRef} />
-
       {/* <PreLoader /> */}
       {children}
       <ScrollToTop topText={scrollTopText} />

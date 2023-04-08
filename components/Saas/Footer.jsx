@@ -45,7 +45,7 @@ const Footer = () => {
               </small>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-3 col-sm-6">
             <div className="items">
               <div className="title">
                 Useful Links
@@ -69,7 +69,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-3 col-sm-6">
             <div className="items">
               <div className="title">
                 Resource
@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="my-4">
           <div className="d-flex justify-content-center">
             <small className="small">
-              © 2022 Copyrights by <a href="#" className="fw-bold text-decoration-underline">EditPro</a> All Rights Reserved.
+              © 2022 Copyrights by <a href="#" className="fw-bold text-decoration-underline">EditPro</a> - All Rights Reserved.
             </small>
           </div>
         </div>

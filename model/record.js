@@ -9,6 +9,6 @@ export default {
     );
   },
   Get:(userid, callback) => {
-    pool.query("SELECT * FROM record WHERE fk_user_id = ?", [id], callback);
+    pool.query("SELECT * FROM record WHERE fk_user_id = ? limit 10", [userid], callback);
   },
 };

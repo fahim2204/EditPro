@@ -112,7 +112,7 @@ const Navbar = ({ navbarRef, bgTransparent }) => {
                   <li className="text-center">{session.user.name}</li>
                   <li className="text-center fs-10px mb-2">{session.user.email}</li>
                   <li>
-                    <Link className="nav-link fw-light py-1" href="/login">
+                    <Link className="nav-link fw-light py-1" href="/dashboard">
                       My Dashboard
                     </Link>
                   </li>

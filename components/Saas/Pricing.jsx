@@ -16,11 +16,6 @@ const Pricing = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
-  useEffect(() => {
-    console.log("monthlyPlan>> ", monthlyPlan);
-    console.log("paygPlan>> ", paygPlan);
-  }, [paygPlan, monthlyPlan]);
-
   const handleBuy = (obj) => {
     // Chack if user is logged in
     if (!session) {
