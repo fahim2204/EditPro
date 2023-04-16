@@ -19,20 +19,16 @@
   ],
   "payAsGo": [
     {
-      "creditAmmount": 1,
-      "creditPrice": 129
-    },
-    {
       "creditAmmount": 10,
-      "creditPrice": 599
+      "creditPrice": 80
     },
     {
-      "creditAmmount": 75,
-      "creditPrice": 3290
+      "creditAmmount": 50,
+      "creditPrice": 325
     },
     {
-      "creditAmmount": 200,
-      "creditPrice": 6690
+      "creditAmmount": 150,
+      "creditPrice": 815
     }
   ]
 }

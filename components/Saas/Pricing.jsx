@@ -80,7 +80,7 @@ const Pricing = () => {
                 and Adobe Photoshop
               </div>
             </div>
-            <div className="col-12 col-md-6 col-lg-4">
+            {/* <div className="col-12 col-md-6 col-lg-4">
               <div className="bg-gray5 rounded border shadow-sm p-3 best-con">
                 <div className="label">best choice</div>
                 <h4 className="fw-normal mt-2 mb-1">Subscription Plan</h4>
@@ -131,13 +131,13 @@ const Pricing = () => {
                   Buy Now
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="col-12 col-md-6 col-lg-4">
               <div className="border rounded-3 shadow-sm p-3 best-con">
-                <h4 className="fw-normal mt-2 mb-1">Pay As You Go</h4>
-                <h2 className="color-blue5 mb-3">
+                <h4 className="fw-normal mt-2 mb-1">Subscription Plan</h4>
+                {/* <h2 className="color-blue5 mb-3">
                   ₹ 500 <span className="fs-6 fw-light">/ image</span>
-                </h2>
+                </h2> */}
                 <div className="mt-4 flex flex-column">
                   {Plans.payAsGo.map((item, index) => {
                     return (
@@ -173,6 +173,9 @@ const Pricing = () => {
                       </div>
                     );
                   })}
+                </div>
+                <div className="text-center">
+                  <small className="text-muted">* For custom subscription <a className="text-decoration-underline" href="mailto:info@editpro.ai">contact us</a></small>
                 </div>
                 <button
                   onClick={() => handleBuy(paygPlan)}
